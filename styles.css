@@ -1,0 +1,1422 @@
+/* =========================
+   VARIABLES GLOBALES
+========================= */
+
+:root {
+  --bg: #ffffff;
+  --ink: #17212b;
+  --muted: #6b7280;
+
+  --primary: #16a085;
+  --primary-dark: #0f766e;
+  --accent: #f6c453;
+
+  --soft: #f5fbfa;
+  --line: #dbeafe;
+
+  --shadow: 0 24px 60px rgba(15, 118, 110, 0.14);
+  --radius: 28px;
+}
+
+
+/* =========================
+   RESET Y BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+
+/* =========================
+   LAYOUT GENERAL
+========================= */
+
+.app {
+  width: min(1220px, 94%);
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 48px 24px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at top left, #e0fff8, transparent 35%),
+    radial-gradient(circle at bottom right, #fff3c4, transparent 30%),
+    #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  color: var(--primary-dark);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 6vw, 5rem);
+  margin: 8px 0;
+  letter-spacing: -0.06em;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+
+/* =========================
+   PANELES
+========================= */
+
+.panel,
+.study {
+  margin-top: 32px;
+  padding: 36px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.06);
+}
+
+.panel {
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    padding 0.35s ease,
+    margin 0.35s ease,
+    transform 0.35s ease;
+}
+
+.panel h2 {
+  margin-top: 28px;
+  font-size: 1.1rem;
+}
+
+.settings-collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  overflow: hidden;
+  transform: translateY(-18px);
+  pointer-events: none;
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+.mode-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+label:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  background: var(--soft);
+}
+
+input {
+  accent-color: var(--primary);
+}
+
+select {
+  width: 120px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 22px;
+  background: var(--primary);
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+#startBtn {
+  margin-top: 28px;
+  font-size: 1.05rem;
+}
+
+.settings-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 9999;
+
+  display: block;
+
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  background: #17212b;
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 900;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.settings-toggle.hidden {
+  display: none;
+}
+
+
+/* =========================
+   GRUPOS
+========================= */
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.group-card {
+  padding: 18px;
+  border-radius: 24px;
+  background: #fbfefd;
+  border: 1px solid #e5e7eb;
+}
+
+.group-title {
+  width: 100%;
+  background: #17212b;
+  margin-bottom: 14px;
+}
+
+.group-title:hover {
+  background: #000;
+}
+
+.group-items {
+  display: grid;
+  gap: 10px;
+}
+
+.family-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 14px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 18px;
+
+  background: #ffffff;
+  color: #17212b;
+
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.family-option:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.family-option.selected {
+  background: #dff7e8;
+  border-color: #6ee7a1;
+  color: #166534;
+}
+
+.family-option:not(.selected) {
+  background: #ffffff;
+  color: #17212b;
+  border-color: #d1d5db;
+}
+
+
+/* =========================
+   ZONA DE ESTUDIO
+========================= */
+
+.progress {
+  color: var(--muted);
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.study-layout {
+  display: block;
+}
+
+.flashcard {
+  min-height: 500px;
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+
+  padding: 48px 56px 72px;
+  border-radius: 34px;
+
+  background: linear-gradient(145deg, #ffffff, #f4fffc);
+  border: 2px solid #d1fae5;
+  box-shadow: var(--shadow);
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.flashcard h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin: 12px 0;
+}
+
+.flashcard small {
+  color: var(--muted);
+  font-weight: 700;
+  opacity: 0.55;
+  font-size: 0.82rem;
+}
+
+.controls {
+  margin-top: 24px;
+
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hint-text {
+  display: inline-block;
+  margin-left: 10px;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.help-btn {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 5;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+}
+
+.help-text {
+  position: absolute;
+  left: 18px;
+  bottom: 64px;
+  z-index: 5;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  background: #dcfce7;
+  color: #166534;
+
+  font-weight: 900;
+}
+
+
+/* =========================
+   MODO ESTUDIO ACTIVO
+========================= */
+
+.study-active .study {
+  margin-top: 10px;
+}
+
+.study-active .flashcard {
+  min-height: min(680px, calc(100vh - 230px));
+}
+
+.study-active #cardContent {
+  width: 100%;
+}
+
+.study-active .hero {
+  margin-bottom: 10px;
+}
+
+
+/* =========================
+   ESTRUCTURAS ORGÁNICAS
+========================= */
+
+.organic-structure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 320px;
+  width: 100%;
+  max-width: 100%;
+
+  padding: 36px 24px;
+  overflow: hidden;
+}
+
+.molecule-scaler {
+  display: inline-block;
+  transform-origin: center;
+}
+
+.organic-chain {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  width: max-content;
+  max-width: none;
+
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+
+  white-space: nowrap;
+
+  transform-origin: center center;
+}
+
+.atom-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 42px;
+  min-height: 70px;
+}
+
+.atom {
+  display: inline-block;
+}
+
+
+/* =========================
+   ENLACES QUÍMICOS
+========================= */
+
+.bond {
+  position: relative;
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 20px;
+}
+
+.bond span {
+  position: absolute;
+
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+
+  background: #0f172a;
+}
+
+.bond-double span:first-child {
+  transform: translateY(-4px);
+}
+
+.bond-double span:last-child {
+  transform: translateY(4px);
+}
+
+.bond-triple span:first-child {
+  transform: translateY(-7px);
+}
+
+.bond-triple span:nth-child(2) {
+  transform: translateY(0);
+}
+
+.bond-triple span:last-child {
+  transform: translateY(7px);
+}
+
+
+/* =========================
+   RAMIFICACIONES LINEALES
+========================= */
+
+.branch {
+  position: absolute;
+  left: 50%;
+
+  font-size: 1em;
+  font-weight: 800;
+
+  transform: translateX(-50%);
+}
+
+.branch-up {
+  bottom: 100%;
+  margin-bottom: 24px;
+}
+
+.branch-up::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  top: 120%;
+
+  width: 3px;
+  height: 30px;
+  border-radius: 999px;
+
+  background: #0f172a;
+
+  transform: translateX(-50%);
+}
+
+.branch-down {
+  top: 100%;
+  margin-top: 24px;
+}
+
+.branch-down::before {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 130%;
+
+  width: 3px;
+  height: 30px;
+  border-radius: 999px;
+
+  background: #0f172a;
+
+  transform: translateX(-50%);
+}
+
+.branch-left {
+  position: absolute;
+  top: 50%;
+  left: -85px;
+
+  transform: translateY(-50%);
+}
+
+.branch-left::after {
+  content: "";
+
+  position: absolute;
+  left: calc(100% + 18px);
+  top: 50%;
+
+  width: 35px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: translateY(-50%);
+}
+
+.branch-right {
+  position: absolute;
+  top: 50%;
+  left: 135px;
+
+  transform: translateY(-50%);
+}
+
+.branch-right::before {
+  content: "";
+
+  position: absolute;
+  right: calc(100% + 18px);
+  top: 50%;
+
+  width: 35px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: translateY(-50%);
+}
+
+.branch-chain {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+.branch-atom {
+  display: inline-block;
+}
+
+.branch-horizontal-bond {
+  display: inline-block;
+
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+
+  background: #0f172a;
+}
+
+.branch-up .branch-chain,
+.branch-down .branch-chain {
+  position: relative;
+  transform: translateX(calc(50% - 15px));
+}
+
+.branch-left .branch-chain {
+  flex-direction: row-reverse;
+}
+
+.branch-right .branch-chain {
+  flex-direction: row;
+}
+
+.branch-grow-left {
+  flex-direction: row-reverse;
+  transform: translateX(calc(-100% + 15px));
+}
+
+.branch-up .branch-chain.branch-grow-left,
+.branch-down .branch-chain.branch-grow-left {
+  transform: translateX(calc(-100% + 110px));
+  flex-direction: row-reverse;
+}
+
+.branch-up.branch-double::before,
+.branch-up.branch-double::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+
+  width: 3px;
+  height: 30px;
+
+  border-radius: 999px;
+  background: #0f172a;
+}
+
+.branch-up.branch-double::before {
+  left: calc(50% - 5px);
+}
+
+.branch-up.branch-double::after {
+  left: calc(50% + 5px);
+}
+
+.branch-up.branch-double {
+  transform: translateX(-35%);
+}
+
+.branch-double .branch-atom {
+  transform: translateX(4px);
+}
+
+
+/* =========================
+   MOLÉCULAS LARGAS
+========================= */
+
+#cardContent.long-molecule .organic-structure,
+#cardContent.very-long-molecule .organic-structure {
+  justify-content: flex-start;
+}
+
+#cardContent.long-molecule .molecule-scaler,
+#cardContent.very-long-molecule .molecule-scaler {
+  transform-origin: left center;
+}
+
+#cardContent.very-long-molecule .organic-chain {
+  gap: 2px;
+}
+
+#cardContent.very-long-molecule .atom-wrapper {
+  min-width: 92px;
+}
+
+#cardContent.very-long-molecule .bond {
+  width: 14px;
+}
+
+#cardContent.very-long-molecule .bond span {
+  width: 14px;
+}
+
+
+/* =========================
+   CICLOS
+========================= */
+
+.organic-ring {
+  position: relative;
+
+  width: 320px;
+  height: 320px;
+
+  margin: 0 auto;
+}
+
+.ring-atom {
+  position: absolute;
+  z-index: 2;
+
+  overflow: visible;
+
+  padding: 2px 6px;
+
+  background: #f4fffc;
+
+  font-size: 1.8rem;
+  font-weight: 900;
+
+  transform: translate(-50%, -50%);
+}
+
+.ring-bond {
+  position: absolute;
+  z-index: 1;
+
+  height: 24px;
+
+  transform-origin: center;
+}
+
+.ring-bond span {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+
+  background: #0f172a;
+}
+
+.ring-bond-single span {
+  top: 10px;
+}
+
+.ring-bond-double span:first-child {
+  top: 6px;
+}
+
+.ring-bond-double span:last-child {
+  top: 14px;
+}
+
+.ring-bond-triple span:first-child {
+  top: 3px;
+}
+
+.ring-bond-triple span:nth-child(2) {
+  top: 10px;
+}
+
+.ring-bond-triple span:last-child {
+  top: 17px;
+}
+
+
+/* =========================
+   RAMIFICACIONES EN CICLOS
+========================= */
+
+.ring-branch {
+  position: absolute;
+  z-index: 5;
+
+  font-size: inherit;
+  font-weight: inherit;
+
+  white-space: nowrap;
+}
+
+.ring-branch-up {
+  left: 50%;
+  bottom: 100%;
+
+  margin-bottom: 46px;
+
+  transform: translateX(-50%);
+}
+
+.ring-branch-up::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  top: 100%;
+
+  width: 3px;
+  height: 32px;
+
+  background: #0f172a;
+
+  transform: translateX(-50%);
+}
+
+.ring-branch-down {
+  left: 50%;
+  top: 100%;
+
+  margin-top: 36px;
+
+  transform: translateX(-50%);
+}
+
+.ring-branch-down::before {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+
+  width: 3px;
+  height: 32px;
+
+  background: #0f172a;
+
+  transform: translateX(-50%);
+}
+
+.ring-branch-right {
+  left: 100%;
+  top: 50%;
+
+  margin-left: 40px;
+
+  transform: translateY(-50%);
+}
+
+.ring-branch-right::before {
+  content: "";
+
+  position: absolute;
+  right: 100%;
+  top: 50%;
+
+  width: 36px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: translateY(-50%);
+}
+
+.ring-branch-left {
+  right: 100%;
+  top: 50%;
+
+  margin-right: 40px;
+
+  transform: translateY(-50%);
+}
+
+.ring-branch-left::after {
+  content: "";
+
+  position: absolute;
+  left: 100%;
+  top: 50%;
+
+  width: 36px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: translateY(-50%);
+}
+
+.ring-branch .branch-chain {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+.ring-branch-up .branch-chain,
+.ring-branch-down .branch-chain {
+  position: relative;
+  transform: translateX(calc(50% - 16px));
+}
+
+.ring-branch-left .branch-chain {
+  flex-direction: row-reverse;
+}
+
+.ring-branch-right .branch-chain {
+  flex-direction: row;
+}
+
+
+/* =========================
+   DOBLE ENLACE EN CICLOS
+========================= */
+
+.ring-branch-up.ring-branch-double::before,
+.ring-branch-up.ring-branch-double::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 140%;
+
+  width: 2px;
+  height: 30px;
+
+  border-radius: 999px;
+  background: #0f172a;
+}
+
+
+/* barra izquierda */
+
+.ring-branch-up.ring-branch-double::before {
+  transform: translateX(-4px);
+}
+
+
+/* barra derecha */
+
+.ring-branch-up.ring-branch-double::after {
+  transform: translateX(4px);
+}
+
+
+/* mover ligeramente el oxígeno */
+
+.ring-branch-double .branch-atom {
+  transform: translate(6px, 12px);
+}
+
+
+
+/* =========================
+   AROMÁTICOS
+========================= */
+
+.aromatic-ring {
+  position: relative;
+}
+
+.aromatic-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 110px;
+  height: 110px;
+
+  border: 4px solid #0f172a;
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================
+   ÁCIDOS Y ÉSTERES
+========================= */
+
+.carboxyl-group,
+.ester-group {
+  position: relative;
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 126px;
+  height: 96px;
+}
+
+.central-carbon {
+  position: absolute;
+  left: 2px;
+  top: inherit;
+
+  color: #0f172a;
+
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.oxygen {
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.oxygen-up {
+  position: absolute;
+  left: 74px;
+  top: -40px;
+}
+
+.oh-down,
+.ester-o-down {
+  position: absolute;
+  left: 80px;
+  bottom: -30px;
+}
+
+.diagonal-bond {
+  position: absolute;
+  display: block;
+
+  width: 46px;
+  height: 3px;
+  border-radius: 999px;
+
+  background: #0f172a;
+
+  transform-origin: left center;
+}
+
+.double-bond-up {
+  left: 34px;
+  top: 30px;
+
+  transform: rotate(-45deg);
+}
+
+.double-bond-up.second {
+  top: 40px;
+}
+
+.single-bond-down {
+  left: 34px;
+  top: 60px;
+
+  transform: rotate(35deg);
+}
+
+.ester-extra-bond {
+  position: absolute;
+  left: 118px;
+  bottom: -5px;
+
+  width: 22px;
+  height: 3px;
+  padding: 0;
+
+  border-radius: 999px;
+  background: #0f172a;
+
+  font-size: 0;
+}
+
+.ester-tail {
+  position: absolute;
+  left: 145px;
+  bottom: -30px;
+
+  color: #0f172a;
+
+  font-weight: 900;
+}
+
+.dynamic-ester {
+  width: calc(140px + (var(--tail-atoms) * 96px));
+  min-width: calc(140px + (var(--tail-atoms) * 96px));
+  padding-right: 0;
+}
+
+.ester-tail-chain {
+  position: absolute;
+  left: 80px;
+  bottom: -30px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   ALDEHÍDOS
+========================= */
+
+.aldehyde-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 126px;
+  height: 96px;
+
+  flex-shrink: 0;
+}
+
+.aldehyde-h {
+  position: absolute;
+  left: 80px;
+  bottom: -15px;
+
+  color: #0f172a;
+
+  font-size: inherit;
+  font-weight: 800;
+}
+
+/* =========================
+   AMIDAS
+========================= */
+
+.amide-group {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 170px;
+  height: 110px;
+
+  flex-shrink: 0;
+}
+
+
+/* ---------- NH₂ primaria ---------- */
+
+.amide-nh2 {
+  position: absolute;
+
+  left: 78px;
+  bottom: -4px;
+
+  color: #0f172a;
+
+  font-size: inherit;
+  font-weight: 800;
+}
+
+
+/* ---------- NHR secundaria ---------- */
+
+.amide-secondary-chain {
+  position: absolute;
+
+  left: 80px;
+  bottom: 0px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   AMIDAS TERCIARIAS
+========================= */
+
+.amide-tertiary {
+  position: absolute;
+
+  left: 82px;
+  bottom: 0px;
+
+  color: #0f172a;
+  font-weight: 800;
+}
+
+
+/* N central */
+
+.amide-tertiary-n {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+   /* RAMA SUPERIOR DERECHA */
+
+.amide-upper-right-branch {
+  position: absolute;
+
+  left: 170%;
+  bottom: 85%;
+
+  margin-left: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.amide-upper-right-branch::before {
+  content: "";
+
+  position: absolute;
+
+  right: calc(100% + 6px);
+  top: 50%;
+
+  width: 42px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: rotate(-32deg);
+  transform-origin: right center;
+}
+
+
+   /* RAMA INFERIOR DERECHA */
+
+
+.amide-lower-right-branch {
+  position: absolute;
+
+  left: 170%;
+  top: 85%;
+
+  margin-left: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.amide-lower-right-branch::before {
+  content: "";
+
+  position: absolute;
+
+  right: calc(100% + 6px);
+  top: 50%;
+
+  width: 42px;
+  height: 3px;
+
+  background: #0f172a;
+
+  transform: rotate(32deg);
+  transform-origin: right center;
+}
+
+/* =========================
+   NITRILOS
+========================= */
+
+.nitrile-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+.nitrile-bond {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  margin: 0 2px;
+
+  flex-shrink: 0;
+}
+
+
+
+/* =========================
+   RESPONSIVE: TABLET
+========================= */
+
+@media (max-width: 840px) {
+  .study-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .organic-structure {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+
+  .flashcard {
+    min-height: 430px;
+    padding: 32px 16px 76px;
+    overflow: hidden;
+  }
+
+  .organic-chain {
+    font-size: 1.45rem;
+    gap: 2px;
+  }
+
+  .bond {
+    width: 14px;
+  }
+
+  .bond span {
+    width: 14px;
+    height: 2px;
+  }
+
+  .carboxyl-group,
+  .ester-group {
+    width: 92px;
+    height: 72px;
+  }
+
+  .oxygen-up {
+    left: 52px;
+    top: -28px;
+  }
+
+  .oh-down,
+  .ester-o-down {
+    left: 58px;
+    bottom: -18px;
+  }
+
+  .ester-tail {
+    left: 100px;
+    bottom: -18px;
+  }
+
+  .ester-extra-bond {
+    left: 78px;
+    bottom: -7px;
+
+    width: 18px;
+    height: 2px;
+  }
+
+  .diagonal-bond {
+    width: 34px;
+  }
+
+  .double-bond-up {
+    left: 24px;
+    top: 24px;
+  }
+
+  .double-bond-up.second {
+    top: 31px;
+  }
+
+  .single-bond-down {
+    left: 24px;
+    top: 46px;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE: MÓVIL
+========================= */
+
+@media (max-width: 520px) {
+  .app {
+    width: min(100%, 96%);
+  }
+
+  .study {
+    padding: 16px;
+  }
+
+  .flashcard {
+    min-height: 390px;
+    padding: 28px 8px 74px;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE: MÓVIL PEQUEÑO
+========================= */
+
+@media (max-width: 390px) {
+  /* Añade aquí ajustes para pantallas muy pequeñas si los necesitas */
+}

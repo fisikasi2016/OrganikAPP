@@ -1,0 +1,9 @@
+{
+  "name": "Formulazio Organikoa",
+  "short_name": "Organikoa",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a085",
+  "icons": []
+}

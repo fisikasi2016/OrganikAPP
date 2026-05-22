@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Formulazio Organikoa</title>
+
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="manifest" href="./manifest.json" />
+</head>
+
+<body>
+  <button id="settingsToggle" class="settings-toggle hidden" type="button">
+    Aukeren panela erakutsi
+  </button>
+
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Kimika organikoa euskaraz</p>
+      <h1>Formulazio Organikoa</h1>
+      <p>Ikasi izenak eta formulak sistema argi, polit eta azkar batekin.</p>
+    </header>
+
+    <section id="settingsPanel" class="panel">
+      <h2>Talde Funtzionalak</h2>
+      <div id="groups" class="groups"></div>
+
+      <h2>Aukeratu ariketa mota</h2>
+
+      <div class="mode-grid">
+        <label>
+          <input type="checkbox" value="nameToFormula"  />
+          Izenetik formulara
+        </label>
+
+        <label>
+          <input type="checkbox" value="formulaToName" checked />
+          Formulatik izenera
+        </label>
+      </div>
+
+      <h2>Konposatu kopurua</h2>
+
+      <select id="cardCount">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="infinite" selected>∞</option>
+      </select>
+
+      <h2>
+        Ordena
+        <span class="hint-text">
+          (konposatuak errazenetik zailenera edo modu nahasian agertu daitezke)
+        </span>
+      </h2>
+
+      <div class="mode-grid">
+        <label>
+          <input type="radio" name="order" value="ordered" checked />
+          Ordenan
+        </label>
+
+        <label>
+          <input type="radio" name="order" value="mixed" />
+          Nahastuta
+        </label>
+      </div>
+
+      <button id="startBtn" type="button">Hasi</button>
+    </section>
+
+    <section id="studyArea" class="study hidden">
+      <div class="progress">
+        <span id="progressText"></span>
+      </div>
+
+      <div class="study-layout">
+        <article id="flashcard" class="flashcard">
+          <button id="helpBtn" class="help-btn" type="button">Laguntza</button>
+          <div id="helpText" class="help-text hidden"></div>
+
+          <div id="cardContent"></div>
+
+          <small>Klik egin erantzuna ikusteko</small>
+        </article>
+
+        <aside id="videoBox" class="video-box hidden">
+          <h3>Azalpen bideoa</h3>
+
+          <a id="videoLink" target="_blank" rel="noopener">
+            <img id="videoThumb" alt="YouTube bideoaren azala" />
+          </a>
+        </aside>
+      </div>
+
+      <div class="controls">
+        <button id="prevBtn" type="button">Aurrekoa</button>
+        <button id="flipBtn" type="button">Bueltatu</button>
+        <button id="nextBtn" type="button">Hurrengoa</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
