@@ -1,6 +1,6 @@
 {
-  "name": "Formulazio Organikoa",
-  "short_name": "Organikoa",
+  "name": "Organikapp",
+  "short_name": "Organikapp",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
