@@ -1252,16 +1252,13 @@ function downloadTestPDF() {
         }
 
         .pdf-page {
-          width: 281mm;
-          height: 194mm;
+          width: 100%;
+          min-height: auto;
 
           padding: 0;
-          margin: 0 auto;
+          margin: 0 auto 20px;
 
-          page-break-after: always;
-          break-after: page;
-
-          overflow: hidden;
+          overflow: visible;
         }
 
         .pdf-grid {
@@ -1332,7 +1329,7 @@ function downloadTestPDF() {
         }
 
         .pdf-tall-molecule .molecule-scaler {
-          transform: scale(0.20) !important;
+          transform: scale(0.30) !important;
           transform-origin: center center !important;
         }
 
@@ -1356,6 +1353,7 @@ function downloadTestPDF() {
           background: #0f172a !important;
         }
 
+
         @media print {
           .toolbar {
             display: none !important;
@@ -1371,9 +1369,83 @@ function downloadTestPDF() {
           .pdf-page {
             width: 281mm;
             height: 194mm;
+
+            margin: 0;
+
             page-break-after: always;
             break-after: page;
+
             overflow: hidden;
+          }
+
+          .bond span,
+          .branch-horizontal-bond,
+          .diagonal-bond,
+          .ring-bond span,
+          .ester-extra-bond,
+          .vertical-double-bond {
+            min-height: 3px !important;
+            height: 3px !important;
+            background: #0f172a !important;
+            border-radius: 999px !important;
+          }
+
+          .branch-up::after,
+          .branch-down::before,
+          .branch-left::after,
+          .branch-right::before,
+          .branch-up.branch-double::before,
+          .branch-up.branch-double::after {
+            width: 3px !important;
+            min-width: 3px !important;
+            background: #0f172a !important;
+          }
+
+
+        }
+
+        @media print and (max-width: 900px) {
+          .molecule-scaler {
+            transform: scale(0.72) !important;
+          }
+
+          .pdf-tall-molecule .molecule-scaler {
+            transform: scale(0.28) !important;
+          }
+
+          .bond span,
+          .branch-horizontal-bond,
+          .diagonal-bond,
+          .ring-bond span,
+          .ester-extra-bond,
+          .vertical-double-bond {
+            min-height: 4px !important;
+            height: 4px !important;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
+
+          .pdf-grid {
+            grid-template-columns: 1fr !important;
+            grid-template-rows: auto !important;
+            height: auto !important;
+          }
+
+          .pdf-cell {
+            min-height: 180px;
+          }
+
+          .pdf-name-exercise {
+            font-size: 1.1rem;
+          }
+
+          .molecule-scaler {
+            transform: scale(0.9) !important;
+          }
+
+          .pdf-tall-molecule .molecule-scaler {
+            transform: scale(0.5) !important;
           }
         }
       </style>
