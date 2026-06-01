@@ -8,6 +8,10 @@
 
   <link rel="stylesheet" href="./styles.css" />
   <link rel="manifest" href="./manifest.json" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -15,16 +19,17 @@
     Aukeren panela erakutsi
   </button>
 
-
   <main class="app">
     <header class="hero">
       <p class="eyebrow">Kimika organikoa euskaraz</p>
       <h1>Formulazio Organikoa</h1>
       <p>Ikasi izenak eta formulak sistema argi, polit eta azkar batekin.</p>
     </header>
-      <button id="installBtn" class="install-button hidden" type="button">
-        Deskargatu aplikazioa
-      </button>
+
+    <button id="installBtn" class="install-button hidden" type="button">
+      Deskargatu aplikazioa
+    </button>
+
 
     <section id="settingsPanel" class="panel">
       <h2>Talde Funtzionalak</h2>
@@ -34,7 +39,7 @@
 
       <div class="mode-grid">
         <label>
-          <input type="checkbox" value="nameToFormula"  />
+          <input type="checkbox" value="nameToFormula" />
           Izenetik formulara
         </label>
 
@@ -51,13 +56,13 @@
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="5"  selected>5</option>
         <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
         <option value="10">10</option>
-        <option value="infinite" selected>∞</option>
+        <option value="infinite">∞</option>
       </select>
 
       <h2>
@@ -107,9 +112,17 @@
       </div>
 
       <div class="controls">
-        <button id="prevBtn" type="button">Aurrekoa</button>
-        <button id="flipBtn" type="button">Bueltatu</button>
-        <button id="nextBtn" type="button">Hurrengoa</button>
+        <div class="nav-buttons">
+          <button id="prevBtn" type="button">Aurrekoa</button>
+          <button id="flipBtn" type="button">Bueltatu</button>
+          <button id="nextBtn" type="button">Hurrengoa</button>
+        </div>
+
+        <button id="downloadTestBtn"
+                class="download-test-btn hidden"
+                type="button">
+          Froga deskargatu
+        </button>
       </div>
     </section>
   </main>

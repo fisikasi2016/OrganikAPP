@@ -17,6 +17,8 @@ const helpBtn = document.getElementById("helpBtn");
 const helpText = document.getElementById("helpText");
 const settingsPanel = document.getElementById("settingsPanel");
 const settingsToggle = document.getElementById("settingsToggle");
+const downloadTestBtn = document.getElementById("downloadTestBtn");
+downloadTestBtn.addEventListener("click", downloadTestPDF);
 
 document.getElementById("flipBtn").addEventListener("click", flipCard);
 document.getElementById("prevBtn").addEventListener("click", previousCard);
@@ -159,6 +161,7 @@ function startStudy() {
   flipped = false;
 
   studyArea.classList.remove("hidden");
+  downloadTestBtn.classList.remove("hidden");
   settingsPanel.classList.add("settings-collapsed");
   settingsToggle.classList.remove("hidden");
   settingsToggle.textContent = "Aukeren Panela Erakutsi";
@@ -194,6 +197,7 @@ function renderCard() {
   const card = deck[currentIndex];
 
   flipped = false;
+  flashcard.classList.remove("answer-side");
 
   videoBox.classList.add("hidden");
   helpText.classList.add("hidden");
@@ -221,13 +225,16 @@ function flipCard() {
   helpText.textContent = "";
 
   if (flipped) {
+    flashcard.classList.add("answer-side");
+
     if (card.mode === "nameToFormula") {
-        renderMolecule(card.structure);
-        } else {
-        cardContent.innerHTML = buildNameAnswer(card);
-        }
+      renderMolecule(card.structure);
+    } else {
+      cardContent.innerHTML = buildNameAnswer(card);
+    }
 
   } else {
+    flashcard.classList.remove("answer-side");
     renderCard();
   }
 }
@@ -457,7 +464,10 @@ function buildBranchContent(branch) {
 }
 
 function buildOrganicStructure(structure) {
-
+  if (structure.dicarboxylic) {
+    return buildDicarboxylicAcid(structure);
+  }
+  
   if (structure.aromatic) {
     return buildAromaticStructure(structure);
   }
@@ -465,6 +475,7 @@ function buildOrganicStructure(structure) {
   if (structure.cyclic) {
     return buildCyclicStructure(structure);
   }
+  
 
   const chainHTML = structure.chain
     .map((atom, index) => {
@@ -693,6 +704,59 @@ function buildCyclicStructure(structure) {
         <div class="organic-ring">
           ${bondsHTML}
           ${atomsHTML}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function buildDicarboxylicAcid(structure) {
+  const carboxylHTML = (left = false) => `
+    <span class="carboxyl-group${left ? " carboxyl-left" : ""}">
+      <span class="central-carbon">C</span>
+
+      <span class="diagonal-bond double-bond-up"></span>
+      <span class="diagonal-bond double-bond-up second"></span>
+      <span class="oxygen oxygen-up">O</span>
+
+      <span class="diagonal-bond single-bond-down"></span>
+      <span class="oxygen oh-down">OH</span>
+    </span>
+  `;
+
+  const chainHTML = structure.chain
+    .map((atom, index) => `
+      <span class="atom-wrapper">
+        <span class="atom">${atom}</span>
+      </span>
+
+      ${
+        structure.bonds[index]
+          ? buildBond(structure.bonds[index])
+          : ""
+      }
+    `)
+    .join("");
+
+  return `
+    <div class="organic-structure">
+      <div class="molecule-scaler">
+        <div class="organic-chain">
+
+          ${carboxylHTML(true)}
+
+          ${buildBond("single")}
+
+          ${chainHTML}
+
+          ${
+            structure.chain.length > 0
+              ? buildBond("single")
+              : ""
+          }
+
+          ${carboxylHTML(false)}
+
         </div>
       </div>
     </div>
@@ -1052,6 +1116,324 @@ function balanceModes(cards, maxSameModeInRow = 2) {
 
 function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
+}
+
+function downloadTestPDF() {
+  if (!deck.length) return;
+
+  const questionPages = [];
+  const answerPages = [];
+
+  for (let i = 0; i < deck.length; i += 10) {
+    const chunk = deck.slice(i, i + 10);
+
+    const exercisesHTML = chunk.map((card, index) => {
+      const isTallStructure =
+        card.structure?.cyclic || card.structure?.aromatic;
+
+      const exercise =
+        card.mode === "nameToFormula"
+          ? `<div class="pdf-name-exercise">${getDisplayName(card)}</div>`
+          : `
+            <div class="${isTallStructure ? "pdf-tall-molecule" : ""}">
+              ${buildOrganicStructure(card.structure)}
+            </div>
+          `;
+
+      return `
+        <div class="pdf-cell">
+          <span class="pdf-number">${i + index + 1}</span>
+          ${exercise}
+        </div>
+      `;
+    }).join("");
+
+    const answersHTML = chunk.map((card, index) => {
+      const isTallStructure =
+        card.structure?.cyclic || card.structure?.aromatic;
+
+      const answer =
+        card.mode === "nameToFormula"
+          ? `
+            <div class="${isTallStructure ? "pdf-tall-molecule" : ""}">
+              ${buildOrganicStructure(card.structure)}
+            </div>
+          `
+          : `<div class="pdf-name-exercise">${card.name}</div>`;
+
+      return `
+        <div class="pdf-cell answer-cell">
+          <span class="pdf-number">${i + index + 1}</span>
+          ${answer}
+        </div>
+      `;
+    }).join("");
+
+    questionPages.push(`
+      <section class="pdf-page">
+        <div class="pdf-grid">
+          ${exercisesHTML}
+        </div>
+      </section>
+    `);
+
+    answerPages.push(`
+      <section class="pdf-page answer-page">
+        <div class="pdf-grid">
+          ${answersHTML}
+        </div>
+      </section>
+    `);
+  }
+
+  const printWindow = window.open("", "_blank");
+
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="eu">
+    <head>
+      <meta charset="UTF-8">
+      <title>Froga</title>
+      <link rel="stylesheet" href="./styles.css">
+
+      <style>
+        @page {
+          size: A4 landscape;
+          margin: 8mm;
+        }
+
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          box-sizing: border-box;
+        }
+
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: white;
+          color: #17212b;
+          font-family: Arial, sans-serif;
+        }
+
+        body {
+          width: 100%;
+        }
+
+        .toolbar {
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+          margin: 20px 0;
+        }
+
+        .toolbar button {
+          padding: 16px 32px;
+
+          font-size: 1.15rem;
+          font-weight: 700;
+
+          border-radius: 14px;
+          border: none;
+
+          cursor: pointer;
+
+          background: #14b8a6;
+          color: white;
+        }
+
+        .toolbar button:hover {
+          opacity: 0.9;
+        }
+
+        button {
+          margin: 12px;
+        }
+
+        .pdf-page {
+          width: 281mm;
+          height: 194mm;
+
+          padding: 0;
+          margin: 0 auto;
+
+          page-break-after: always;
+          break-after: page;
+
+          overflow: hidden;
+        }
+
+        .pdf-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: repeat(5, 1fr);
+          gap: 3mm;
+
+          width: 100%;
+          height: 100%;
+        }
+
+        .pdf-cell {
+          position: relative;
+
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+
+          height: 100%;
+          min-height: 0;
+
+          padding: 5mm 5mm 4mm;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          overflow: visible;
+        }
+
+        .answer-cell {
+          background: rgba(16, 185, 129, 0.06);
+        }
+
+        .pdf-number {
+          position: absolute;
+          top: 4px;
+          left: 6px;
+
+          font-size: 1.65rem;
+          font-weight: 700;
+          color: #64748b;
+        }
+
+        .pdf-name-exercise {
+          width: 100%;
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          font-size: 1.35rem;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .organic-structure {
+          min-height: 72px !important;
+          padding: 0 !important;
+          overflow: visible !important;
+          justify-content: center !important;
+        }
+
+        .molecule-scaler {
+          transform: scale(0.58) !important;
+          transform-origin: center center !important;
+        }
+
+        .pdf-tall-molecule .molecule-scaler {
+          transform: scale(0.20) !important;
+          transform-origin: center center !important;
+        }
+
+        .pdf-tall-molecule .organic-structure {
+          min-height: 34px !important;
+          padding: 0 !important;
+        }
+
+        .organic-chain {
+          font-size: 1.25rem !important;
+          gap: 6px !important;
+          overflow: visible !important;
+          justify-content: center !important;
+        }
+
+        .bond span,
+        .branch-horizontal-bond,
+        .diagonal-bond,
+        .ring-bond span,
+        .ester-extra-bond {
+          background: #0f172a !important;
+        }
+
+        @media print {
+          .toolbar {
+            display: none !important;
+          }
+
+          #answersSection {
+            display: block !important;
+          }
+          button {
+            display: none;
+          }
+
+          .pdf-page {
+            width: 281mm;
+            height: 194mm;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+
+      <div class="toolbar">
+        <button id="showAnswersBtn">
+          Erantzunak erakutsi
+        </button>
+
+        <button onclick="window.print()">
+          PDF bezala gorde / Inprimatu
+        </button>
+      </div>
+
+      <div id="questionsSection">
+        ${questionPages.join("")}
+      </div>
+
+      <div id="answersSection" style="display:none;">
+        ${answerPages.join("")}
+      </div>
+
+      <script>
+        document
+          .getElementById("showAnswersBtn")
+          .addEventListener("click", () => {
+
+            const answers =
+              document.getElementById("answersSection");
+
+            const btn =
+              document.getElementById("showAnswersBtn");
+
+            answers.style.display = "block";
+
+            btn.textContent = "Erantzunak ezkutatu";
+
+            btn.onclick = () => {
+              const visible =
+                answers.style.display !== "none";
+
+              answers.style.display =
+                visible ? "none" : "block";
+
+              btn.textContent =
+                visible
+                  ? "Erantzunak erakutsi"
+                  : "Erantzunak ezkutatu";
+            };
+          });
+      </script>
+
+    </body>
+    </html>
+  `);
+
+  printWindow.document.close();
 }
 
 if ("serviceWorker" in navigator) {
