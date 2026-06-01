@@ -1323,86 +1323,43 @@ button:hover {
 
 
 
+
+
 /* =========================
-   RESPONSIVE: TABLET
+   ESCALADO GLOBAL MOLÉCULAS EN MÓVIL
 ========================= */
 
 @media (max-width: 840px) {
-  .study-layout {
-    grid-template-columns: 1fr;
-  }
-
   .organic-structure {
     justify-content: flex-start;
-    padding-left: 0;
+    overflow: visible;
+    padding: 16px 0;
   }
 
-  .flashcard {
-    min-height: 430px;
-    padding: 32px 16px 76px;
-    overflow: hidden;
+  .molecule-scaler {
+    transform: scale(0.62) !important;
+    transform-origin: left center;
   }
 
   .organic-chain {
-    font-size: 1.45rem;
-    gap: 2px;
+    font-size: 2.2rem;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 520px) {
+  .molecule-scaler {
+    transform: scale(0.52) !important;
   }
 
-  .bond {
-    width: 14px;
+  .flashcard {
+    overflow: visible;
   }
+}
 
-  .bond span {
-    width: 14px;
-    height: 2px;
-  }
-
-  .carboxyl-group,
-  .ester-group {
-    width: 92px;
-    height: 72px;
-  }
-
-  .oxygen-up {
-    left: 52px;
-    top: -28px;
-  }
-
-  .oh-down,
-  .ester-o-down {
-    left: 58px;
-    bottom: -18px;
-  }
-
-  .ester-tail {
-    left: 100px;
-    bottom: -18px;
-  }
-
-  .ester-extra-bond {
-    left: 78px;
-    bottom: -7px;
-
-    width: 18px;
-    height: 2px;
-  }
-
-  .diagonal-bond {
-    width: 34px;
-  }
-
-  .double-bond-up {
-    left: 24px;
-    top: 24px;
-  }
-
-  .double-bond-up.second {
-    top: 31px;
-  }
-
-  .single-bond-down {
-    left: 24px;
-    top: 46px;
+@media (max-width: 390px) {
+  .molecule-scaler {
+    transform: scale(0.45) !important;
   }
 }
 
@@ -1427,11 +1384,5 @@ button:hover {
 }
 
 
-/* =========================
-   RESPONSIVE: MÓVIL PEQUEÑO
-========================= */
 
-@media (max-width: 390px) {
-  /* Añade aquí ajustes para pantallas muy pequeñas si los necesitas */
-}
 
