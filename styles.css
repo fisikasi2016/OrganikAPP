@@ -214,6 +214,33 @@ button:hover {
   display: none;
 }
 
+.install-button {
+  display: block;
+
+  width: fit-content;
+  min-width: 220px;
+
+  margin: 20px auto 0;
+
+  padding: 14px 28px;
+
+  border-radius: 999px;
+
+  background: #17212b;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 800;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+
+.install-button:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
 
 /* =========================
    GRUPOS
@@ -1407,3 +1434,4 @@ button:hover {
 @media (max-width: 390px) {
   /* Añade aquí ajustes para pantallas muy pequeñas si los necesitas */
 }
+
