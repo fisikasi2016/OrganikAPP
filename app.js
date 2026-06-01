@@ -243,12 +243,16 @@ function countCarbonsInText(text = "") {
 }
 
 function getBranchCarbonLength(branch) {
+  if (branch.type === "isopropyl") return 3;
+  if (branch.type === "isobutyl") return 4;
+
   if (branch.atoms) {
     return branch.atoms.reduce(
       (total, atom) => total + countCarbonsInText(atom),
       0
     );
   }
+  if (branch.type === "tertbutyl") return 4;
 
   if (branch.text) {
     return countCarbonsInText(branch.text);
@@ -372,6 +376,60 @@ function fitMoleculeToCard(approxLength, isRingStructure) {
 }
 
 function buildBranchContent(branch) {
+  if (branch.type === "isopropyl") {
+    return `
+      <span class="branch-chain">
+        <span class="branch-atom">CH</span>
+        <span class="branch-horizontal-bond"></span>
+        <span class="branch-atom">CH₃</span>
+        <span class="branch branch-down">
+          <span class="branch-chain">
+            <span class="branch-atom">CH₃</span>
+          </span>
+        </span>
+      </span>
+    `;
+  }
+
+  if (branch.type === "isobutyl") {
+    return `
+      <span class="branch-chain">
+        <span class="branch-atom">CH₂</span>
+        <span class="branch-horizontal-bond"></span>
+        <span class="branch-atom">CH</span>
+        <span class="branch-horizontal-bond"></span>
+        <span class="branch-atom">CH₃</span>
+        <span class="branch branch-down">
+          <span class="branch-chain">
+            <span class="branch-atom">CH₃</span>
+          </span>
+        </span>
+      </span>
+    `;
+  }
+
+  if (branch.type === "tertbutyl") {
+    return `
+      <span class="branch-chain">
+        <span class="branch-atom">C</span>
+
+        <span class="branch branch-up">
+          <span class="branch-chain">
+            <span class="branch-atom">CH₃</span>
+          </span>
+        </span>
+
+        <span class="branch branch-down">
+          <span class="branch-chain">
+            <span class="branch-atom">CH₃</span>
+          </span>
+        </span>
+
+        <span class="branch-horizontal-bond"></span>
+        <span class="branch-atom">CH₃</span>
+      </span>
+    `;
+  }
 
   const atoms = branch.atoms || [branch.text];
 
@@ -383,7 +441,6 @@ function buildBranchContent(branch) {
   const branchAtomsHTML = atoms
     .map((atom, index) => `
       <span class="branch-atom">${atom}</span>
-
       ${
         index < atoms.length - 1
           ? `<span class="branch-horizontal-bond"></span>`

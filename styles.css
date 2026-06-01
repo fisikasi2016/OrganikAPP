@@ -695,7 +695,7 @@ button:hover {
    MOLÉCULAS LARGAS
 ========================= */
 
-#cardContent.long-molecule .organic-structure,
+/* #cardContent.long-molecule .organic-structure,
 #cardContent.very-long-molecule .organic-structure {
   justify-content: flex-start;
 }
@@ -703,23 +703,10 @@ button:hover {
 #cardContent.long-molecule .molecule-scaler,
 #cardContent.very-long-molecule .molecule-scaler {
   transform-origin: left center;
-}
+} */
 
-#cardContent.very-long-molecule .organic-chain {
-  gap: 2px;
-}
 
-#cardContent.very-long-molecule .atom-wrapper {
-  min-width: 92px;
-}
 
-#cardContent.very-long-molecule .bond {
-  width: 14px;
-}
-
-#cardContent.very-long-molecule .bond span {
-  width: 14px;
-}
 
 
 /* =========================

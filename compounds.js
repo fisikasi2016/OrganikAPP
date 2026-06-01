@@ -22,7 +22,7 @@ export const groupData = [
 
 
 export const compounds = [
-// ###ALKANOAK###
+    // ###ALKANOAK###
     //1
     {
     group: "Alkanoak",
@@ -1960,8 +1960,7 @@ export const compounds = [
         aromatic: true,
         ring: ["C", "CH", "CH", "CH", "CH", "CH"],
         branches: [
-        { at: 0, atoms: ["CH", "CH₃"], direction: "up" },
-        { at: 0, atoms: ["CH₃"], direction: "right" }
+        { at: 0, type: "isopropyl", direction: "up" }
         ]
     },
     difficulty: 5
@@ -2349,8 +2348,7 @@ export const compounds = [
         ring: ["C", "CH", "C", "CH", "C", "CH"],
         branches: [
         { at: 0, atoms: ["CH₂", "CH₃"], direction: "up" },
-        { at: 2, atoms: ["CH", "CH₃"], direction: "right" },
-        { at: 2, atoms: ["CH₃"], direction: "down" },
+        { at: 2, type: "isopropyl", direction: "right" },
         { at: 4, atoms: ["CH₃"], direction: "left" }
         ]
     },
@@ -3065,8 +3063,7 @@ export const compounds = [
         bonds: ["single", "single", "single", "single", "single", "single"],
         branches: [
         { at: 0, atoms: ["OH"], direction: "up" },
-        { at: 1, atoms: ["CH", "CH₃"], direction: "right" },
-        { at: 1, atoms: ["CH₃"], direction: "up" }
+        { at: 1, type: "isopropyl", direction: "right" }
         ]
     },
     difficulty: 15
@@ -5002,22 +4999,22 @@ export const compounds = [
     },
 
     // 12
-    {
-    group: "Esterrak",
-    name: "Metil 2,2-dimetilpropanoatoa",
-    aliases: ["Metil pibalatoa"],
-    structure: {
-        chain: ["C"],
-        bonds: [],
-        branches: [
-        { at: 0, atoms: ["CH₃"], direction: "up" },
-        { at: 0, atoms: ["CH₃"], direction: "down" },
-        { at: 0, atoms: ["CH₃"], direction: "left" }
-        ],
-        endGroup: "COOCH3"
-    },
-    difficulty: 8
-    },
+    // {
+    // group: "Esterrak",
+    // name: "Metil 2,2-dimetilpropanoatoa",
+    // aliases: ["Metil pibalatoa"],
+    // structure: {
+    //     chain: ["C"],
+    //     bonds: [],
+    //     branches: [
+    //     { at: 0, atoms: ["CH₃"], direction: "up" },
+    //     { at: 0, atoms: ["CH₃"], direction: "down" },
+    //     { at: 0, atoms: ["CH₃"], direction: "left" }
+    //     ],
+    //     endGroup: "COOCH3"
+    // },
+    // difficulty: 8
+    // },
 
     // 13
     {
