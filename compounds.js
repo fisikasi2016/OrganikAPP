@@ -6263,7 +6263,6 @@ export const compounds = [
     {
     group: ["Azido Karboxilikoak", "Aminak"],
     name: "Azido 2-aminopropanoikoa",
-    aliases: ["Alanina"],
     structure: {
         chain: ["CH₃", "CH"],
         bonds: ["single"],
@@ -6279,7 +6278,6 @@ export const compounds = [
     {
     group: ["Azido Karboxilikoak", "Aminak"],
     name: "Azido 2-aminoetanoikoa",
-    aliases: ["Glizina"],
     structure: {
         chain: ["CH₂"],
         bonds: [],
@@ -6670,7 +6668,6 @@ export const compounds = [
     {
     group: ["Aromatikoak", "Alkoholak", "Aldehidoak"],
     name: "2-hidroxibentzenokarbaldehidoa",
-    aliases: ["Salizilaldehidoa"],
     structure: {
         aromatic: true,
         ring: ["C", "C", "CH", "CH", "CH", "CH"],
@@ -6686,7 +6683,6 @@ export const compounds = [
     {
     group: ["Aromatikoak", "Alkoholak", "Azido Karboxilikoak"],
     name: "Azido 2-hidroxibentzenokarboxilikoa",
-    aliases: ["Azido salizilikoa"],
     structure: {
         aromatic: true,
         ring: ["C", "C", "CH", "CH", "CH", "CH"],
@@ -6732,7 +6728,6 @@ export const compounds = [
     {
     group: ["Aromatikoak", "Eterrak", "Aldehidoak"],
     name: "4-metoxibentzenokarbaldehidoa",
-    aliases: ["Anisaldehidoa"],
     structure: {
         aromatic: true,
         ring: ["C", "CH", "CH", "C", "CH", "CH"],
