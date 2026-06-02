@@ -1391,7 +1391,7 @@ button:hover {
 .difficulty-badge {
   position: absolute;
 
-  top: -60px;
+  top: -20px;
   left: 18px;
 
   display: flex;
