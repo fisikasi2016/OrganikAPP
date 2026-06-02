@@ -1470,6 +1470,10 @@ button:hover {
     font-size: 2.2rem;
     gap: 6px;
   }
+  .difficulty-badge {
+    left: 124px;
+    top: -20px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -1481,6 +1485,15 @@ button:hover {
     overflow: visible;
   }
 }
+
+@media (max-width: 520px) {
+  .difficulty-badge {
+    left: 24px;
+    top: 95px;
+  }
+}
+
+
 
 @media (max-width: 390px) {
   .molecule-scaler {
