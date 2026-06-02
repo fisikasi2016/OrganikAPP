@@ -1568,12 +1568,14 @@ button:hover {
   .molecule-scaler {
     transform: scale(0.45) !important;
   }
+  .difficulty-badge {
+    left: 24px;
+    top: -60px;
+  }
 }
 
 
-/* =========================
-   RESPONSIVE: MÓVIL
-========================= */
+
 
 
 
