@@ -232,13 +232,11 @@ export const compounds = [
     group: "Alkanoak",
     name: "2,2-dimetilpropanoa",
     structure: {
-        chain: ["C"],
-        bonds: [],
+        chain: ["CH₃","C","CH₃"],
+        bonds: ["single", "single"],
         branches: [
-        { at: 0, atoms: ["CH₃"], direction: "up" },
-        { at: 0, atoms: ["CH₃"], direction: "down" },
-        { at: 0, atoms: ["CH₃"], direction: "left" },
-        { at: 0, atoms: ["CH₃"], direction: "right" }
+        { at: 1, atoms: ["CH₃"], direction: "up" },
+        { at: 1, atoms: ["CH₃"], direction: "down" }
         ]
     },
     difficulty: 4
@@ -1109,7 +1107,7 @@ export const compounds = [
     name: "Ziklopentenoa",
     structure: {
         cyclic: true,
-        ring: ["CH₂", "CH", "CH", "CH₂", "CH₂"],
+        ring: ["CH", "CH", "CH₂", "CH₂", "CH₂"],
         bonds: ["double", "single", "single", "single", "single"]
     },
     difficulty: 6
@@ -1135,7 +1133,7 @@ export const compounds = [
     group: "Alkenoak",
     name: "3,4-dimetilhept-2-enoa",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH", "CH₂", "CH₂", "CH₃"],
+        chain: ["CH₃", "CH", "C", "CH", "CH₂", "CH₂", "CH₃"],
         bonds: ["single", "double", "single", "single", "single", "single"],
         branches: [
         {
@@ -1944,7 +1942,7 @@ export const compounds = [
 
     // 6
     {
-    group: "Aromatikoak",
+    group: ["Aromatikoak", "Alkoholak"],
     name: "Fenola",
     aliases: ["Hidroxibentzenoa"],
     structure: {
@@ -1959,7 +1957,7 @@ export const compounds = [
 
     // 7
     {
-    group: "Aromatikoak",
+    group: ["Aromatikoak", "Aminak"],
     name: "Aminobentzenoa",
     structure: {
         aromatic: true,
@@ -2060,7 +2058,7 @@ export const compounds = [
 
     // 14
     {
-    group: "Aromatikoak",
+    group: ["Aromatikoak", "Alkoholak"],
     name: "2-metilfenola",
     structure: {
         aromatic: true,
@@ -2075,7 +2073,7 @@ export const compounds = [
 
     // 15
     {
-    group: "Aromatikoak",
+    group: ["Aromatikoak", "Alkoholak"],
     name: "3-metilfenola",
     structure: {
         aromatic: true,
@@ -2090,7 +2088,7 @@ export const compounds = [
 
     // 16
     {
-    group: "Aromatikoak",
+    group: ["Aromatikoak", "Alkoholak"],
     name: "4-metilfenola",
     structure: {
         aromatic: true,
@@ -2439,7 +2437,7 @@ export const compounds = [
     // 9
     {
     group: "Alkoholak",
-    name: "Pentanol-1-ola",
+    name: "Pentan-1-ola",
     structure: {
         chain: ["CH₃", "CH₂", "CH₂", "CH₂", "CH₂", "OH"],
         bonds: ["single", "single", "single", "single", "single"],
@@ -2477,14 +2475,15 @@ export const compounds = [
     },
 
     // 12
+    // 12
     {
     group: "Alkoholak",
     name: "2-metilbutan-1-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "CH₂", "OH"],
+        chain: ["CH₃", "CH₂", "CH", "CH₂", "OH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" }
+        { at: 2, atoms: ["CH₃"], direction: "up" }
         ]
     },
     difficulty: 7
@@ -2503,6 +2502,7 @@ export const compounds = [
     },
     difficulty: 7
     },
+
 
     // 14
     {
@@ -2640,8 +2640,8 @@ export const compounds = [
     group: "Alkoholak",
     name: "But-2-en-1-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂", "OH"],
-        bonds: ["single", "double", "single", "single"],
+        chain: ["CH₃", "CH₂", "CH", "CH", "OH"],
+        bonds: ["single", "single", "double", "single"],
         branches: []
     },
     difficulty: 10
@@ -2759,8 +2759,8 @@ export const compounds = [
     group: "Alkoholak",
     name: "Pent-2-en-1-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂", "OH"],
-        bonds: ["single", "double", "single", "single"],
+        chain: ["CH₃", "CH₂", "CH", "CH", "CH₂", "OH"],
+        bonds: ["single", "single", "double", "single", "single"],
         branches: []
     },
     difficulty: 11
@@ -2771,8 +2771,8 @@ export const compounds = [
     group: "Alkoholak",
     name: "Pent-3-en-2-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "CH", "CH₂"],
-        bonds: ["single", "single", "single", "double"],
+        chain: ["CH₃", "CH", "CH", "CH", "CH₃"],
+        bonds: ["single", "single", "double", "single"],
         branches: [
         { at: 1, atoms: ["OH"], direction: "up" }
         ]
@@ -2799,8 +2799,8 @@ export const compounds = [
     group: "Alkoholak",
     name: "3-metilhex-4-en-2-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂", "CH", "CH₃"],
-        bonds: ["single", "single", "single", "single", "double"],
+        chain: ["CH₃", "CH", "CH", "CH", "CH", "CH₃"],
+        bonds: ["single", "single", "single", "double", "single"],
         branches: [
         { at: 1, atoms: ["OH"], direction: "up" },
         { at: 2, atoms: ["CH₃"], direction: "down" }
@@ -2814,8 +2814,8 @@ export const compounds = [
     group: "Alkoholak",
     name: "3-etil-4-metilhex-5-en-2-ola",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single"],
+        chain: ["CH₃", "CH", "CH", "CH", "CH", "CH₂"],
+        bonds: ["single", "single", "single", "single", "double"],
         branches: [
         { at: 1, atoms: ["OH"], direction: "up" },
         { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" },
@@ -2830,9 +2830,11 @@ export const compounds = [
     group: "Alkoholak",
     name: "But-3-in-1-ola",
     structure: {
-        chain: ["CH", "C", "CH₂", "CH₂", "OH"],
-        bonds: ["triple", "single", "single", "single"],
-        branches: []
+        chain: ["CH₂", "CH₂", "C", "CH"],
+        bonds: ["single", "single", "triple"],
+        branches: [
+        { at: 0, atoms: ["OH"], direction: "up" }
+        ]
     },
     difficulty: 12
     },
@@ -2990,7 +2992,7 @@ export const compounds = [
     // 47
     {
     group: "Alkoholak",
-    name: "2,4-dimetilziklopentanol",
+    name: "2,4-dimetilziklopentanola",
     structure: {
         cyclic: true,
         ring: ["CH", "CH", "CH₂", "CH", "CH₂"],
@@ -3164,17 +3166,7 @@ export const compounds = [
     },
 
     // 9
-    {
-    group: "Eterrak",
-    name: "1-etoxipropanoa",
-    aliases: ["Etil propil eterra"],
-    structure: {
-        chain: ["CH₃", "CH₂", "O", "CH₂", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: []
-    },
-    difficulty: 5
-    },
+
 
     // 10
     {
@@ -3365,7 +3357,7 @@ export const compounds = [
             chain: ["CH₃", "CH", "CH", "CH₂"],
             bonds: ["single", "double", "single"],
             branches: [
-            { at: 3, atoms: ["O", "CH₃"], direction: "up" }
+                { at: 3, atoms: ["O", "CH₃"], direction: "up" }
             ]
         },
         difficulty: 11
@@ -3392,10 +3384,10 @@ export const compounds = [
         name: "1-etoxipent-2-enoa",
         aliases: ["Etil pent-2-en-1-il eterra"],
         structure: {
-            chain: ["CH₃", "CH₂", "CH", "CH", "CH₂"],
-            bonds: ["single", "single", "double", "single"],
+            chain: ["CH₃", "CH", "CH", "CH₂", "CH₂"],
+            bonds: ["single", "double", "single", "single"],
             branches: [
-            { at: 4, atoms: ["O", "CH₂", "CH₃"], direction: "up" }
+                { at: 4, atoms: ["O", "CH₂", "CH₃"], direction: "up" }
             ]
         },
         difficulty: 12
@@ -3644,7 +3636,7 @@ export const compounds = [
         chain: ["CH₃", "CH₂", "CH"],
         bonds: ["single", "single"],
         branches: [
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "up", grow:"left" }
+        { at: 2, atoms: ["CH₂", "CH₃"], direction: "up", grow: "left" }
         ],
         endGroup: "CHO"
     },
@@ -3672,8 +3664,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "But-2-enala",
     structure: {
-        chain: ["CH₃", "CH","CH"],
-        bonds: ["double"],
+        chain: ["CH₃", "CH", "CH"],
+        bonds: ["single", "double"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3698,8 +3690,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "Pent-2-enala",
     structure: {
-        chain: ["CH₃", "CH₂", "CH"],
-        bonds: ["single", "double"],
+        chain: ["CH₃", "CH₂", "CH", "CH"],
+        bonds: ["single", "single", "double"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3711,8 +3703,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "Hex-2-enala",
     structure: {
-        chain: ["CH₃", "CH₂", "CH₂", "CH"],
-        bonds: ["single", "single", "double"],
+        chain: ["CH₃", "CH₂", "CH₂", "CH", "CH"],
+        bonds: ["single", "single", "single", "double"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3724,10 +3716,10 @@ export const compounds = [
     group: "Aldehidoak",
     name: "2-metilbut-2-enala",
     structure: {
-        chain: ["CH₃", "C"],
-        bonds: ["double"],
+        chain: ["CH₃", "CH", "C"],
+        bonds: ["single", "double"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" }
+        { at: 2, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "CHO"
     },
@@ -3739,8 +3731,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "3-metilpent-2-enala",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "double"],
+        chain: ["CH₃", "CH₂", "C", "CH"],
+        bonds: ["single", "single", "double"],
         branches: [
         { at: 2, atoms: ["CH₃"], direction: "up" }
         ],
@@ -3754,11 +3746,11 @@ export const compounds = [
     group: "Aldehidoak",
     name: "2,4-dimetilhex-2-enala",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "C"],
-        bonds: ["single", "single", "double"],
+        chain: ["CH₃", "CH₂", "CH", "CH", "C"],
+        bonds: ["single", "single", "single", "double"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
+        { at: 2, atoms: ["CH₃"], direction: "up" },
+        { at: 4, atoms: ["CH₃"], direction: "down" }
         ],
         endGroup: "CHO"
     },
@@ -3770,8 +3762,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "But-2-inala",
     structure: {
-        chain: ["CH₃", "C","C"],
-        bonds: ["triple"],
+        chain: ["CH₃", "C", "C"],
+        bonds: ["single", "triple"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3783,8 +3775,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "Pent-2-inala",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "triple"],
+        chain: ["CH₃", "CH₂", "C", "C"],
+        bonds: ["single", "single", "triple"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3796,8 +3788,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "Hex-3-inala",
     structure: {
-        chain: ["CH₃", "CH₂", "C", "C"],
-        bonds: ["single", "single", "triple"],
+        chain: ["CH₃", "CH₂", "C", "C", "CH₂"],
+        bonds: ["single", "single", "triple", "single"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3807,10 +3799,10 @@ export const compounds = [
     // 24
     {
     group: "Aldehidoak",
-    name: "3-metilpent-2-inala",
+    name: "4-metilpent-2-inala",
     structure: {
-        chain: ["CH₃", "CH", "C"],
-        bonds: ["single", "triple"],
+        chain: ["CH₃", "CH", "C", "C"],
+        bonds: ["single", "single", "triple"],
         branches: [
         { at: 1, atoms: ["CH₃"], direction: "up" }
         ],
@@ -3824,10 +3816,10 @@ export const compounds = [
     group: "Aldehidoak",
     name: "4-etilhex-2-inala",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "C"],
-        bonds: ["single", "single", "triple"],
+        chain: ["CH₃", "CH₂", "CH", "C", "C"],
+        bonds: ["single", "single", "single", "triple"],
         branches: [
-        { at: 1, atoms: ["CH₂", "CH₃"], direction: "up" }
+        { at: 2, atoms: ["CH₂", "CH₃"], direction: "up" }
         ],
         endGroup: "CHO"
     },
@@ -3839,8 +3831,8 @@ export const compounds = [
     group: "Aldehidoak",
     name: "Hex-2-en-4-inala",
     structure: {
-        chain: ["CH₃", "C", "C", "CH"],
-        bonds: ["single", "triple", "single"],
+        chain: ["CH₃", "C", "C", "CH", "CH"],
+        bonds: ["single", "triple", "single", "double"],
         branches: [],
         endGroup: "CHO"
     },
@@ -3852,11 +3844,11 @@ export const compounds = [
     group: "Aldehidoak",
     name: "2-etil-3-metilpentanala",
     structure: {
-        chain: ["CH₃", "CH", "CH"],
-        bonds: ["single", "single"],
+        chain: ["CH₃", "CH₂", "CH", "CH"],
+        bonds: ["single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "down" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "up", grow:"left" }
+        { at: 2, atoms: ["CH₃"], direction: "down" },
+        { at: 3, atoms: ["CH₂", "CH₃"], direction: "up", grow: "left" }
         ],
         endGroup: "CHO"
     },
@@ -3885,12 +3877,12 @@ export const compounds = [
     group: "Aldehidoak",
     name: "3-etil-2,4-dimetilhexanala",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH", "CH", "CH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" },
-        { at: 3, atoms: ["CH₃"], direction: "up" }
+        { at: 2, atoms: ["CH₃"], direction: "up" },
+        { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" },
+        { at: 4, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "CHO"
     },
@@ -3902,470 +3894,471 @@ export const compounds = [
     group: "Aldehidoak",
     name: "2,4-dimetilhept-2-en-5-inala",
     structure: {
-        chain: ["CH₃", "C", "C", "CH", "C"],
-        bonds: ["single", "triple", "single", "double"],
+        chain: ["CH₃", "C", "C", "CH", "CH", "C"],
+        bonds: ["single", "triple", "single", "single", "double"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
+        { at: 3, atoms: ["CH₃"], direction: "down" },
+        { at: 5, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "CHO"
     },
     difficulty: 16
     },
 
-    // ###ZETONAK###
 
-    // 1
-    {
-    group: "Zetonak",
-    name: "Propanona",
-    aliases: ["Azetona"],
-    structure: {
-        chain: ["CH₃", "C", "CH₃"],
-        bonds: ["single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 1
-    },
+ // ###ZETONAK###
 
-    // 2
-    {
-    group: "Zetonak",
-    name: "Butan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 2
-    },
+// 1
+{
+  group: "Zetonak",
+  name: "Propanona",
+  aliases: ["Azetona"],
+  structure: {
+    chain: ["CH₃", "C", "CH₃"],
+    bonds: ["single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 1
+},
 
-    // 3
-    {
-    group: "Zetonak",
-    name: "Pentan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 3
-    },
+// 2
+{
+  group: "Zetonak",
+  name: "Butan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 2
+},
 
-    // 4
-    {
-    group: "Zetonak",
-    name: "Pentan-3-ona",
-    structure: {
-        chain: ["CH₃", "CH₂", "C", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single"],
-        branches: [
-        { at: 2, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 3
-    },
+// 3
+{
+  group: "Zetonak",
+  name: "Pentan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 3
+},
 
-    // 5
-    {
-    group: "Zetonak",
-    name: "Hexan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "CH₂", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 4
-    },
+// 4
+{
+  group: "Zetonak",
+  name: "Pentan-3-ona",
+  structure: {
+    chain: ["CH₃", "CH₂", "C", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single"],
+    branches: [
+      { at: 2, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 3
+},
 
-    // 6
-    {
-    group: "Zetonak",
-    name: "Hexan-3-ona",
-    structure: {
-        chain: ["CH₃", "CH₂", "C", "CH₂", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 2, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 4
-    },
+// 5
+{
+  group: "Zetonak",
+  name: "Hexan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "CH₂", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 4
+},
 
-    // 7
-    {
-    group: "Zetonak",
-    name: "3-metilbutan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH₃"],
-        bonds: ["single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 5
-    },
+// 6
+{
+  group: "Zetonak",
+  name: "Hexan-3-ona",
+  structure: {
+    chain: ["CH₃", "CH₂", "C", "CH₂", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 2, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 4
+},
 
-    // 8
-    {
-    group: "Zetonak",
-    name: "4-metilpentan-2-ona",
-    aliases: ["MIBK"],
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
-        bonds: ["single", "single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 6
-    },
+// 7
+{
+  group: "Zetonak",
+  name: "3-metilbutan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH₃"],
+    bonds: ["single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 5
+},
 
-    // 9
-    {
-    group: "Zetonak",
-    name: "3,3-dimetilbutan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "C", "CH₃"],
-        bonds: ["single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "up" },
-        { at: 2, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 7
-    },
+// 8
+{
+  group: "Zetonak",
+  name: "4-metilpentan-2-ona",
+  aliases: ["MIBK"],
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
+    bonds: ["single", "single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 3, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 6
+},
 
-    // 10
-    {
-    group: "Zetonak",
-    name: "3-etilpentan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 7
-    },
+// 9
+{
+  group: "Zetonak",
+  name: "3,3-dimetilbutan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "C", "CH₃"],
+    bonds: ["single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "up" },
+      { at: 2, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 7
+},
 
-    // 11
-    {
-    group: "Zetonak",
-    name: "Hex-3-en-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH", "CH₂", "CH₃"],
-        bonds: ["single", "single", "double", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 8
-    },
+// 10
+{
+  group: "Zetonak",
+  name: "3-etilpentan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 7
+},
 
-    // 12
-    {
-    group: "Zetonak",
-    name: "Pent-3-en-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH₂", "CH₃"],
-        bonds: ["single", "single", "double", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 8
-    },
+// 11
+{
+  group: "Zetonak",
+  name: "Hex-3-en-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH", "CH₂", "CH₃"],
+    bonds: ["single", "single", "double", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 8
+},
 
-    // 13
-    {
-    group: "Zetonak",
-    name: "3-metilhex-4-en-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH", "CH", "CH₃"],
-        bonds: ["single", "single", "single", "double", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 9
-    },
+// 12
+{
+  group: "Zetonak",
+  name: "Pent-3-en-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH", "CH₃"],
+    bonds: ["single", "single", "double", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 8
+},
 
-    // 14
-    {
-    group: "Zetonak",
-    name: "Hex-5-in-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "CH₂", "C", "CH"],
-        bonds: ["single", "single", "single", "single", "triple"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 9
-    },
+// 13
+{
+  group: "Zetonak",
+  name: "3-metilhex-4-en-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH", "CH", "CH₃"],
+    bonds: ["single", "single", "single", "double", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 9
+},
 
-    // 15
-    {
-    group: "Zetonak",
-    name: "Pent-4-in-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH₂", "C", "CH"],
-        bonds: ["single", "single", "single", "triple"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 9
-    },
+// 14
+{
+  group: "Zetonak",
+  name: "Hex-5-in-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "CH₂", "C", "CH"],
+    bonds: ["single", "single", "single", "single", "triple"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 9
+},
 
-    // 16
-    {
-    group: "Zetonak",
-    name: "3-metilpent-4-in-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "C", "CH"],
-        bonds: ["single", "single", "single", "triple"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 10
-    },
+// 15
+{
+  group: "Zetonak",
+  name: "Pent-4-in-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH₂", "C", "CH"],
+    bonds: ["single", "single", "single", "triple"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 9
+},
 
-    // 17
-    {
-    group: "Zetonak",
-    name: "Hept-3-en-5-in-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH", "C", "CH", "CH₃"],
-        bonds: ["single", "single", "double", "single", "triple", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 11
-    },
+// 16
+{
+  group: "Zetonak",
+  name: "3-metilpent-4-in-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "C", "CH"],
+    bonds: ["single", "single", "single", "triple"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 10
+},
 
-    // 18
-    {
-    group: "Zetonak",
-    name: "2,4-dimetilhexan-3-ona",
-    structure: {
-        chain: ["CH₃", "CH", "C", "CH", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 2, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 10
-    },
+// 17
+{
+  group: "Zetonak",
+  name: "Hept-3-en-5-in-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH", "C", "C", "CH₃"],
+    bonds: ["single", "single", "double", "single", "triple", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 11
+},
 
-    // 19
-    {
-    group: "Zetonak",
-    name: "3-etil-4-metilhexan-2-ona",
-    structure: {
-        chain: ["CH₃", "C", "CH", "CH", "CH₂", "CH₃"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" },
-        { at: 3, atoms: ["CH₃"], direction: "up" }
-        ]
-    },
-    difficulty: 11
-    },
+// 18
+{
+  group: "Zetonak",
+  name: "2,4-dimetilhexan-3-ona",
+  structure: {
+    chain: ["CH₃", "CH", "C", "CH", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 2, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 1, atoms: ["CH₃"], direction: "up" },
+      { at: 3, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 10
+},
 
-    // 20
-    {
-    group: "Zetonak",
-    name: "Ziklopropanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 8
-    },
+// 19
+{
+  group: "Zetonak",
+  name: "3-etil-4-metilhexan-2-ona",
+  structure: {
+    chain: ["CH₃", "C", "CH", "CH", "CH₂", "CH₃"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" },
+      { at: 3, atoms: ["CH₃"], direction: "up" }
+    ]
+  },
+  difficulty: 11
+},
 
-    // 21
-    {
-    group: "Zetonak",
-    name: "Ziklobutanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 8
-    },
+// 20
+{
+  group: "Zetonak",
+  name: "Ziklopropanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 8
+},
 
-    // 22
-    {
-    group: "Zetonak",
-    name: "Ziklopentanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 9
-    },
+// 21
+{
+  group: "Zetonak",
+  name: "Ziklobutanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 8
+},
 
-    // 23
-    {
-    group: "Zetonak",
-    name: "Ziklohexanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH₂", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 9
-    },
+// 22
+{
+  group: "Zetonak",
+  name: "Ziklopentanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 9
+},
 
-    // 24
-    {
-    group: "Zetonak",
-    name: "2-metilziklohexanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH", "CH₂", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 1, atoms: ["CH₃"], direction: "right" }
-        ]
-    },
-    difficulty: 10
-    },
+// 23
+{
+  group: "Zetonak",
+  name: "Ziklohexanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH₂", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 9
+},
 
-    // 25
-    {
-    group: "Zetonak",
-    name: "3-metilziklohexanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "right" }
-        ]
-    },
-    difficulty: 10
-    },
+// 24
+{
+  group: "Zetonak",
+  name: "2-metilziklohexanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH", "CH₂", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 1, atoms: ["CH₃"], direction: "right" }
+    ]
+  },
+  difficulty: 10
+},
 
-    // 26
-    {
-    group: "Zetonak",
-    name: "4-etilziklohexanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH₂", "CH₂", "CH", "CH₂", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 11
-    },
+// 25
+{
+  group: "Zetonak",
+  name: "3-metilziklohexanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "right" }
+    ]
+  },
+  difficulty: 10
+},
 
-    // 27
-    {
-    group: "Zetonak",
-    name: "Ziklohex-2-en-1-ona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH", "CH", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "double", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" }
-        ]
-    },
-    difficulty: 11
-    },
+// 26
+{
+  group: "Zetonak",
+  name: "4-etilziklohexanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH₂", "CH₂", "CH", "CH₂", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 11
+},
 
-    // 28
-    {
-    group: "Zetonak",
-    name: "3-metilziklohex-2-en-1-ona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH", "C", "CH₂", "CH₂", "CH₂"],
-        bonds: ["single", "double", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "right" }
-        ]
-    },
-    difficulty: 12
-    },
+// 27
+{
+  group: "Zetonak",
+  name: "Ziklohex-2-en-1-ona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH", "CH", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "double", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" }
+    ]
+  },
+  difficulty: 11
+},
 
-    // 29
-    {
-    group: "Zetonak",
-    name: "2,4-dimetilziklopentanona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH", "CH₂", "CH", "CH₂"],
-        bonds: ["single", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 1, atoms: ["CH₃"], direction: "right" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 12
-    },
+// 28
+{
+  group: "Zetonak",
+  name: "3-metilziklohex-2-en-1-ona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH", "C", "CH₂", "CH₂", "CH₂"],
+    bonds: ["single", "double", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "right" }
+    ]
+  },
+  difficulty: 12
+},
 
-    // 30
-    {
-    group: "Zetonak",
-    name: "4-etil-3-metilziklohex-2-en-1-ona",
-    structure: {
-        cyclic: true,
-        ring: ["C", "CH", "CH", "CH", "CH₂", "CH₂"],
-        bonds: ["single", "double", "single", "single", "single", "single"],
-        branches: [
-        { at: 0, atoms: ["O"], direction: "up", bond: "double" },
-        { at: 2, atoms: ["CH₃"], direction: "right" },
-        { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" }
-        ]
-    },
-    difficulty: 14
-    },
+// 29
+{
+  group: "Zetonak",
+  name: "2,4-dimetilziklopentanona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH", "CH₂", "CH", "CH₂"],
+    bonds: ["single", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 1, atoms: ["CH₃"], direction: "right" },
+      { at: 3, atoms: ["CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 12
+},
+
+// 30
+{
+  group: "Zetonak",
+  name: "4-etil-3-metilziklohex-2-en-1-ona",
+  structure: {
+    cyclic: true,
+    ring: ["C", "CH", "C", "CH", "CH₂", "CH₂"],
+    bonds: ["single", "double", "single", "single", "single", "single"],
+    branches: [
+      { at: 0, atoms: ["O"], direction: "up", bond: "double" },
+      { at: 2, atoms: ["CH₃"], direction: "right" },
+      { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" }
+    ]
+  },
+  difficulty: 14
+},
 
     // ### AZIDO KARBOXILIKOAK ###
 
@@ -4663,12 +4656,12 @@ export const compounds = [
     // 20
     {
     group: "Azido Karboxilikoak",
-    name: "Azido 3-metilpent-2-inoikoa",
+    name: "Azido 4-metilpent-2-inoikoa",
     structure: {
-        chain: ["CH₃", "CH₂", "C", "C"],
+        chain: ["CH₃", "CH", "C", "C"],
         bonds: ["single", "single", "triple"],
         branches: [
-        { at: 2, atoms: ["CH₃"], direction: "up" }
+        { at: 1, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "COOH"
     },
@@ -4836,7 +4829,7 @@ export const compounds = [
     group: "Esterrak",
     name: "Metil metanoatoa",
     structure: {
-        chain: [],
+        chain: ["H"],
         bonds: [],
         branches: [],
         endGroup: "COOCH3"
@@ -4992,12 +4985,11 @@ export const compounds = [
     group: "Esterrak",
     name: "Etil 2,2-dimetilpropanoatoa",
     structure: {
-        chain: ["C"],
-        bonds: [],
+        chain: ["CH₃","C"],
+        bonds: ["single"],
         branches: [
-        { at: 0, atoms: ["CH₃"], direction: "up" },
-        { at: 0, atoms: ["CH₃"], direction: "down" },
-        { at: 0, atoms: ["CH₃"], direction: "left" }
+        { at: 1, atoms: ["CH₃"], direction: "up" },
+        { at: 1, atoms: ["CH₃"], direction: "down" },
         ],
         endGroup: "COOCH2CH3"
     },
@@ -5030,125 +5022,125 @@ export const compounds = [
     difficulty: 9
     },
 
-    // 16
+   // ESTERRAK 16
     {
     group: "Esterrak",
     name: "Metil but-2-enoatoa",
     structure: {
-        chain: ["CH₃", "CH"],
-        bonds: ["double"],
+        chain: ["CH₃", "CH", "CH"],
+        bonds: ["single", "double"],
         branches: [],
         endGroup: "COOCH3"
     },
     difficulty: 9
     },
 
-    // 17
+    // ESTERRAK 17
     {
     group: "Esterrak",
     name: "Etil pent-2-enoatoa",
     structure: {
-        chain: ["CH₃", "CH₂", "CH"],
-        bonds: ["single", "double"],
+        chain: ["CH₃", "CH₂", "CH", "CH"],
+        bonds: ["single", "single", "double"],
         branches: [],
         endGroup: "COOCH2CH3"
     },
     difficulty: 10
     },
 
-    // 18
+    // ESTERRAK 18
     {
     group: "Esterrak",
     name: "Metil 2-metilbut-2-enoatoa",
     structure: {
-        chain: ["CH₃", "C"],
-        bonds: ["double"],
+        chain: ["CH₃", "CH", "C"],
+        bonds: ["single", "double"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" }
+        { at: 2, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "COOCH3"
     },
     difficulty: 11
     },
 
-    // 19
+    // ESTERRAK 19
     {
     group: "Esterrak",
     name: "Metil but-2-inoatoa",
     structure: {
-        chain: ["CH₃", "C"],
-        bonds: ["triple"],
+        chain: ["CH₃", "C", "C"],
+        bonds: ["single", "triple"],
         branches: [],
         endGroup: "COOCH3"
     },
     difficulty: 11
     },
 
-    // 20
+    // ESTERRAK 20
     {
     group: "Esterrak",
     name: "Etil pent-2-inoatoa",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "triple"],
+        chain: ["CH₃", "CH₂", "C", "C"],
+        bonds: ["single", "single", "triple"],
         branches: [],
         endGroup: "COOCH2CH3"
     },
     difficulty: 12
     },
 
-    // 21
+    // ESTERRAK 21
     {
     group: "Esterrak",
     name: "Metil hex-2-en-4-inoatoa",
     structure: {
-        chain: ["CH₃", "C", "C", "CH"],
-        bonds: ["single", "triple", "single"],
+        chain: ["CH₃", "C", "C", "CH", "CH"],
+        bonds: ["single", "triple", "single", "double"],
         branches: [],
         endGroup: "COOCH3"
     },
     difficulty: 13
     },
 
-    // 22
+    // ESTERRAK 22
     {
     group: "Esterrak",
     name: "Etil 2,4-dimetilhexanoatoa",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "CH", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH", "CH₂", "CH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
+        { at: 2, atoms: ["CH₃"], direction: "up" },
+        { at: 4, atoms: ["CH₃"], direction: "down" }
         ],
         endGroup: "COOCH2CH3"
     },
     difficulty: 12
     },
 
-    // 23
+    // ESTERRAK 23
     {
     group: "Esterrak",
     name: "Metil 3-etil-2-metilhexanoatoa",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH₂", "CH", "CH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" }
+        { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" },
+        { at: 4, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "COOCH3"
     },
     difficulty: 13
     },
 
-    // 24
+    // ESTERRAK 24
     {
     group: "Esterrak",
     name: "Propil 3-metilpent-2-enoatoa",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "double"],
+        chain: ["CH₃", "CH₂", "C", "CH"],
+        bonds: ["single", "single", "double"],
         branches: [
         { at: 2, atoms: ["CH₃"], direction: "up" }
         ],
@@ -5156,7 +5148,6 @@ export const compounds = [
     },
     difficulty: 13
     },
-
     // 25
     {
     group: "Esterrak",
@@ -5467,7 +5458,7 @@ export const compounds = [
         chain: ["CH₃"],
         bonds: [],
         branches: [
-        { at: 0, atoms: ["N", "CH₃", "CH₃"], direction: "up" }
+        { at: 0, atoms: ["NH", "CH₃", "CH₃"], direction: "up" }
         ]
     },
     difficulty: 10
@@ -5652,13 +5643,13 @@ export const compounds = [
     difficulty: 8
     },
 
-    // 10
+    // AMIDAK 10
     {
     group: "Amidak",
     name: "Pent-2-inamida",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "triple"],
+        chain: ["CH₃", "CH₂", "C", "C"],
+        bonds: ["single", "single", "triple"],
         branches: [],
         endGroup: "CONH2"
     },
@@ -5693,16 +5684,16 @@ export const compounds = [
     difficulty: 9
     },
 
-    // 17
+    // AMIDAK 17
     {
     group: "Amidak",
     name: "3-etil-2-metilpentanamida",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH", "CH"],
         bonds: ["single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" }
+        { at: 2, atoms: ["CH₂", "CH₃"], direction: "down" },
+        { at: 3, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "CONH2"
     },
@@ -5884,23 +5875,10 @@ export const compounds = [
     difficulty: 9
     },
 
-    // 11
+    // NITRILOAK 11
     {
     group: "Nitriloak",
     name: "Pent-2-inenitriloa",
-    structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "triple"],
-        branches: [],
-        endGroup: "CN"
-    },
-    difficulty: 10
-    },
-
-    // 12
-    {
-    group: "Nitriloak",
-    name: "Hex-3-inenitriloa",
     structure: {
         chain: ["CH₃", "CH₂", "C", "C"],
         bonds: ["single", "single", "triple"],
@@ -5910,13 +5888,26 @@ export const compounds = [
     difficulty: 10
     },
 
-    // 13
+    // NITRILOAK 12
+    {
+    group: "Nitriloak",
+    name: "Hex-3-inenitriloa",
+    structure: {
+        chain: ["CH₃", "CH₂", "C", "C", "CH₂"],
+        bonds: ["single", "single", "triple", "single"],
+        branches: [],
+        endGroup: "CN"
+    },
+    difficulty: 10
+    },
+
+    // NITRILOAK 13
     {
     group: "Nitriloak",
     name: "3-metilpent-2-enenitriloa",
     structure: {
-        chain: ["CH₃", "CH₂", "C"],
-        bonds: ["single", "double"],
+        chain: ["CH₃", "CH₂", "C", "CH"],
+        bonds: ["single", "single", "double"],
         branches: [
         { at: 2, atoms: ["CH₃"], direction: "up" }
         ],
@@ -5944,41 +5935,38 @@ export const compounds = [
     difficulty: 11
     },
 
-    // 15
+    // NITRILOAK 15
     {
     group: "Nitriloak",
     name: "2,4-dimetilhexanonitriloa",
     structure: {
-        chain: ["CH₃", "CH", "CH₂", "CH", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH", "CH₂", "CH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        { at: 3, atoms: ["CH₃"], direction: "down" }
+        { at: 2, atoms: ["CH₃"], direction: "up" },
+        { at: 4, atoms: ["CH₃"], direction: "down" }
         ],
         endGroup: "CN"
     },
     difficulty: 12
     },
 
-    // 16
+    // NITRILOAK 16
     {
     group: "Nitriloak",
     name: "3-etil-2-metilhexanonitriloa",
     structure: {
-        chain: ["CH₃", "CH", "CH", "CH₂", "CH₂"],
+        chain: ["CH₃", "CH₂", "CH₂", "CH", "CH"],
         bonds: ["single", "single", "single", "single"],
         branches: [
-        { at: 1, atoms: ["CH₃"], direction: "up" },
-        {
-            at: 2,
-            atoms: ["CH₂", "CH₃"],
-            direction: "down"
-        }
+        { at: 3, atoms: ["CH₂", "CH₃"], direction: "down" },
+        { at: 4, atoms: ["CH₃"], direction: "up" }
         ],
         endGroup: "CN"
     },
     difficulty: 13
     },
+    
 
     // 17
     {
@@ -6041,5 +6029,763 @@ export const compounds = [
         ]
     },
     difficulty: 14
-    }
+    },
+
+    // ###KONPOSATU MISTOAK###
+
+    // 1
+    {
+    group: ["Aldehidoak", "Alkoholak"],
+    name: "2-hidroxipropanala",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 12
+    },
+
+    // 2
+    {
+    group: ["Aldehidoak", "Alkoholak"],
+    name: "3-hidroxibutanala",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 12
+    },
+
+    // 3
+    {
+    group: ["Aldehidoak", "Aminak"],
+    name: "2-aminopropanala",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 13
+    },
+
+    // 4
+    {
+    group: ["Aldehidoak", "Aminak"],
+    name: "3-aminobutanala",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 13
+    },
+
+    // 5
+    {
+    group: ["Aldehidoak", "Eterrak"],
+    name: "2-metoxipropanala",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 13
+    },
+
+    // 6
+    {
+    group: ["Aldehidoak", "Eterrak"],
+    name: "3-metoxibutanala",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 14
+    },
+
+    // 7
+    {
+    group: ["Aldehidoak", "Nitriloak"],
+    name: "2-zianopropanala",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["CN"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 14
+    },
+
+    // 8
+    {
+    group: ["Aldehidoak", "Nitriloak"],
+    name: "3-zianobutanala",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["CN"], direction: "up" }
+        ],
+        endGroup: "CHO"
+    },
+    difficulty: 14
+    },
+
+    // 9
+    {
+    group: ["Zetonak", "Alkoholak"],
+    name: "4-hidroxipentan-2-ona",
+    structure: {
+        chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
+        bonds: ["single", "single", "single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+        { at: 3, atoms: ["OH"], direction: "down" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 10
+    {
+    group: ["Zetonak", "Alkoholak"],
+    name: "3-hidroxibutan-2-ona",
+    structure: {
+        chain: ["CH₃", "C", "CH", "CH₃"],
+        bonds: ["single", "single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+        { at: 2, atoms: ["OH"], direction: "down" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 11
+    {
+    group: ["Zetonak", "Aminak"],
+    name: "4-aminopentan-2-ona",
+    structure: {
+        chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
+        bonds: ["single", "single", "single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+        { at: 3, atoms: ["NH₂"], direction: "down" }
+        ]
+    },
+    difficulty: 14
+    },
+
+    // 12
+    {
+    group: ["Zetonak", "Eterrak"],
+    name: "4-metoxipentan-2-ona",
+    structure: {
+        chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
+        bonds: ["single", "single", "single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+        { at: 3, atoms: ["O", "CH₃"], direction: "down" }
+        ]
+    },
+    difficulty: 14
+    },
+
+    // 13
+    {
+    group: ["Zetonak", "Nitriloak"],
+    name: "4-zianopentan-2-ona",
+    structure: {
+        chain: ["CH₃", "C", "CH₂", "CH", "CH₃"],
+        bonds: ["single", "single", "single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" },
+        { at: 3, atoms: ["CN"], direction: "down" }
+        ]
+    },
+    difficulty: 15
+    },
+
+    // 14
+    {
+    group: ["Azido Karboxilikoak", "Alkoholak"],
+    name: "Azido 2-hidroxipropanoikoa",
+    aliases: ["Azido laktikoa"],
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 12
+    },
+
+    // 15
+    {
+    group: ["Azido Karboxilikoak", "Alkoholak"],
+    name: "Azido 3-hidroxibutanoikoa",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 13
+    },
+
+    // 16
+    {
+    group: ["Azido Karboxilikoak", "Aminak"],
+    name: "Azido 2-aminopropanoikoa",
+    aliases: ["Alanina"],
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 13
+    },
+
+    // 17
+    {
+    group: ["Azido Karboxilikoak", "Aminak"],
+    name: "Azido 2-aminoetanoikoa",
+    aliases: ["Glizina"],
+    structure: {
+        chain: ["CH₂"],
+        bonds: [],
+        branches: [
+        { at: 0, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 12
+    },
+
+    // 18
+    {
+    group: ["Azido Karboxilikoak", "Zetonak"],
+    name: "Azido 3-oxobutanoikoa",
+    structure: {
+        chain: ["CH₃", "C", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 14
+    },
+
+    // 19
+    {
+    group: ["Azido Karboxilikoak", "Eterrak"],
+    name: "Azido 2-metoxipropanoikoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 14
+    },
+
+    // 20
+    {
+    group: ["Azido Karboxilikoak", "Nitriloak"],
+    name: "Azido 2-zianopropanoikoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["CN"], direction: "up" }
+        ],
+        endGroup: "COOH"
+    },
+    difficulty: 15
+    },
+
+    // 21
+    {
+    group: ["Esterrak", "Alkoholak"],
+    name: "Metil 2-hidroxipropanoatoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "COOCH3"
+    },
+    difficulty: 13
+    },
+
+    // 22
+    {
+    group: ["Esterrak", "Alkoholak"],
+    name: "Etil 3-hidroxibutanoatoa",
+    structure: {
+        chain: ["CH₃", "CH", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "COOCH2CH3"
+    },
+    difficulty: 14
+    },
+
+    // 23
+    {
+    group: ["Esterrak", "Aminak"],
+    name: "Metil 2-aminopropanoatoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "COOCH3"
+    },
+    difficulty: 14
+    },
+
+    // 24
+    {
+    group: ["Esterrak", "Zetonak"],
+    name: "Metil 3-oxobutanoatoa",
+    structure: {
+        chain: ["CH₃", "C", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+        ],
+        endGroup: "COOCH3"
+    },
+    difficulty: 15
+    },
+
+    // 25
+    {
+    group: ["Esterrak", "Eterrak"],
+    name: "Metil 2-metoxipropanoatoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "COOCH3"
+    },
+    difficulty: 15
+    },
+
+    // 26
+    {
+    group: ["Esterrak", "Nitriloak"],
+    name: "Metil 2-zianopropanoatoa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["CN"], direction: "up" }
+        ],
+        endGroup: "COOCH3"
+    },
+    difficulty: 15
+    },
+
+    // 27
+    {
+    group: ["Amidak", "Alkoholak"],
+    name: "2-hidroxipropanamida",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "CONH2"
+    },
+    difficulty: 13
+    },
+
+    // 28
+    {
+    group: ["Amidak", "Aminak"],
+    name: "2-aminopropanamida",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "CONH2"
+    },
+    difficulty: 14
+    },
+
+    // 29
+    {
+    group: ["Amidak", "Zetonak"],
+    name: "3-oxobutanamida",
+    structure: {
+        chain: ["CH₃", "C", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+        ],
+        endGroup: "CONH2"
+    },
+    difficulty: 15
+    },
+
+    // 30
+    {
+    group: ["Amidak", "Eterrak"],
+    name: "2-metoxipropanamida",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "CONH2"
+    },
+    difficulty: 15
+    },
+
+    // 31
+    {
+    group: ["Amidak", "Nitriloak"],
+    name: "2-zianopropanamida",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["CN"], direction: "up" }
+        ],
+        endGroup: "CONH2"
+    },
+    difficulty: 15
+    },
+
+    // 32
+    {
+    group: ["Nitriloak", "Alkoholak"],
+    name: "2-hidroxipropanonitriloa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["OH"], direction: "up" }
+        ],
+        endGroup: "CN"
+    },
+    difficulty: 13
+    },
+
+    // 33
+    {
+    group: ["Nitriloak", "Aminak"],
+    name: "2-aminopropanonitriloa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["NH₂"], direction: "up" }
+        ],
+        endGroup: "CN"
+    },
+    difficulty: 14
+    },
+
+    // 34
+    {
+    group: ["Nitriloak", "Zetonak"],
+    name: "3-oxobutanonitriloa",
+    structure: {
+        chain: ["CH₃", "C", "CH₂"],
+        bonds: ["single", "single"],
+        branches: [
+        { at: 1, atoms: ["O"], direction: "up", bond: "double" }
+        ],
+        endGroup: "CN"
+    },
+    difficulty: 15
+    },
+
+    // 35
+    {
+    group: ["Nitriloak", "Eterrak"],
+    name: "2-metoxipropanonitriloa",
+    structure: {
+        chain: ["CH₃", "CH"],
+        bonds: ["single"],
+        branches: [
+        { at: 1, atoms: ["O", "CH₃"], direction: "up" }
+        ],
+        endGroup: "CN"
+    },
+    difficulty: 15
+    },
+
+    // 36
+    {
+    group: ["Aromatikoak", "Alkoholak"],
+    name: "2-hidroxibentzenola",
+    structure: {
+        aromatic: true,
+        ring: ["C", "C", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["OH"], direction: "up" },
+        { at: 1, atoms: ["OH"], direction: "right" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 37
+    {
+    group: ["Aromatikoak", "Aminak"],
+    name: "2-aminometilbentzenoa",
+    structure: {
+        aromatic: true,
+        ring: ["C", "C", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CH₃"], direction: "up" },
+        { at: 1, atoms: ["NH₂"], direction: "right" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 38
+    {
+    group: ["Aromatikoak", "Aldehidoak"],
+    name: "Bentzenokarbaldehidoa",
+    aliases: ["Benzaldehidoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CHO"], direction: "up" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 39
+    {
+    group: ["Aromatikoak", "Azido Karboxilikoak"],
+    name: "Azido bentzenokarboxilikoa",
+    aliases: ["Azido benzoikoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOH"], direction: "up" }
+        ]
+    },
+    difficulty: 13
+    },
+
+    // 40
+    {
+    group: ["Aromatikoak", "Esterrak"],
+    name: "Metil bentzenokarboxilatoa",
+    aliases: ["Metil benzoatoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOCH₃"], direction: "up" }
+        ]
+    },
+    difficulty: 14
+    },
+
+    // 41
+    {
+    group: ["Aromatikoak", "Nitriloak"],
+    name: "Bentzenokarbonitriloa",
+    aliases: ["Benzonitriloa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CN"], direction: "up" }
+        ]
+    },
+    difficulty: 14
+    },
+
+    // 42
+    {
+    group: ["Aromatikoak", "Amidak"],
+    name: "Bentzenokarboxamida",
+    aliases: ["Benzamida"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CONH₂"], direction: "up" }
+        ]
+    },
+    difficulty: 14
+    },
+
+    // 43
+    {
+    group: ["Aromatikoak", "Alkoholak", "Aldehidoak"],
+    name: "2-hidroxibentzenokarbaldehidoa",
+    aliases: ["Salizilaldehidoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "C", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CHO"], direction: "up" },
+        { at: 1, atoms: ["OH"], direction: "right" }
+        ]
+    },
+    difficulty: 15
+    },
+
+    // 44
+    {
+    group: ["Aromatikoak", "Alkoholak", "Azido Karboxilikoak"],
+    name: "Azido 2-hidroxibentzenokarboxilikoa",
+    aliases: ["Azido salizilikoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "C", "CH", "CH", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOH"], direction: "up" },
+        { at: 1, atoms: ["OH"], direction: "right" }
+        ]
+    },
+    difficulty: 15
+    },
+
+    // 45
+    {
+    group: ["Aromatikoak", "Aminak", "Azido Karboxilikoak"],
+    name: "Azido 4-aminobentzenokarboxilikoa",
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOH"], direction: "up" },
+        { at: 3, atoms: ["NH₂"], direction: "down" }
+        ]
+    },
+    difficulty: 16
+    },
+
+    // 46
+    {
+    group: ["Aromatikoak", "Aminak", "Aldehidoak"],
+    name: "4-aminobentzenokarbaldehidoa",
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CHO"], direction: "up" },
+        { at: 3, atoms: ["NH₂"], direction: "down" }
+        ]
+    },
+    difficulty: 16
+    },
+
+    // 47
+    {
+    group: ["Aromatikoak", "Eterrak", "Aldehidoak"],
+    name: "4-metoxibentzenokarbaldehidoa",
+    aliases: ["Anisaldehidoa"],
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["CHO"], direction: "up" },
+        { at: 3, atoms: ["O", "CH₃"], direction: "down" }
+        ]
+    },
+    difficulty: 16
+    },
+
+    // 48
+    {
+    group: ["Aromatikoak", "Eterrak", "Azido Karboxilikoak"],
+    name: "Azido 4-metoxibentzenokarboxilikoa",
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOH"], direction: "up" },
+        { at: 3, atoms: ["O", "CH₃"], direction: "down" }
+        ]
+    },
+    difficulty: 16
+    },
+
+    // 49
+    {
+    group: ["Aromatikoak", "Alkoholak", "Aminak"],
+    name: "4-aminofenola",
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["OH"], direction: "up" },
+        { at: 3, atoms: ["NH₂"], direction: "down" }
+        ]
+    },
+    difficulty: 15
+    },
+
+    // 50
+    {
+    group: ["Aromatikoak", "Alkoholak", "Esterrak"],
+    name: "Metil 4-hidroxibentzenokarboxilatoa",
+    structure: {
+        aromatic: true,
+        ring: ["C", "CH", "CH", "C", "CH", "CH"],
+        branches: [
+        { at: 0, atoms: ["COOCH₃"], direction: "up" },
+        { at: 3, atoms: ["OH"], direction: "down" }
+        ]
+    },
+    difficulty: 16
+    },
 ];

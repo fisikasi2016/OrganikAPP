@@ -1,4 +1,4 @@
-const CACHE_NAME = "formulazio-organikoa-v8";
+const CACHE_NAME = "formulazio-organikoa-v9";
 
 const FILES = [
   "./",

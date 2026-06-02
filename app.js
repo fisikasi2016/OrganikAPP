@@ -42,7 +42,7 @@ helpBtn.addEventListener("click", (event) => {
 
   const card = deck[currentIndex];
 
-  helpText.textContent = card.group;
+  helpText.textContent = getCompoundGroups(card).join(" + ");
   helpText.classList.toggle("hidden");
 });
 
@@ -96,6 +96,24 @@ function renderGroups() {
   });
 }
 
+function getCompoundGroups(compound) {
+  return Array.isArray(compound.group)
+    ? compound.group
+    : [compound.group];
+}
+
+function compoundMatchesSelectedGroups(compound, selectedGroups) {
+  const compoundGroups = getCompoundGroups(compound);
+
+  return compoundGroups.every((group) =>
+    selectedGroups.includes(group)
+  );
+}
+
+function compoundBelongsToGroup(compound, group) {
+  return getCompoundGroups(compound).includes(group);
+}
+
 function startStudy() {
   const selectedGroups = [...document.querySelectorAll(".family-option.selected")]
     .map((option) => option.dataset.family);
@@ -111,7 +129,7 @@ function startStudy() {
   }
 
   let selectedCompounds = compounds.filter((compound) =>
-    selectedGroups.includes(compound.group)
+    compoundMatchesSelectedGroups(compound, selectedGroups)
   );
 
   if (order === "ordered") {
@@ -124,38 +142,32 @@ function startStudy() {
 
   const count =
     countValue === "infinite"
-      ? selectedCompounds.length
+      ? Math.floor(selectedCompounds.length / selectedModes.length)
       : Number(countValue);
+
+  const totalNeeded = count * selectedModes.length;
 
   const balancedCompounds = getBalancedCompounds(
     selectedCompounds,
     selectedGroups,
-    count,
+    totalNeeded,
     order
   );
 
   deck = [];
 
-  deck = [];
+  balancedCompounds.forEach((compound, index) => {
+    const mode = selectedModes[index % selectedModes.length];
 
-    balancedCompounds.forEach((compound) => {
-    let modesForCompound = [...selectedModes];
-
-    if (order === "mixed") {
-        modesForCompound = shuffle(modesForCompound);
-    }
-
-    modesForCompound.forEach((mode) => {
-        deck.push({
-        ...compound,
-        mode
-        });
+    deck.push({
+      ...compound,
+      mode
     });
-    });
+  });
 
-    if (order === "mixed") {
-    deck = balanceModes(deck, 2);
-    }
+  if (order === "mixed") {
+    deck = shuffle(deck);
+  }
 
   currentIndex = 0;
   flipped = false;
@@ -191,10 +203,29 @@ function buildNameAnswer(card) {
   `;
 }
 
+function buildDifficultyBadge(difficulty = 1) {
+  const maxDifficulty = 16;
+
+  const level = Math.min(
+    4,
+    Math.max(1, Math.ceil((difficulty / maxDifficulty) * 4))
+  );
+
+  return `
+    <div class="difficulty-badge difficulty-level-${level}" title="Zailtasuna: ${difficulty}/${maxDifficulty}">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  `;
+}
+
 function renderCard() {
   if (!deck.length) return;
 
   const card = deck[currentIndex];
+  const difficultyHTML = buildDifficultyBadge(card.difficulty);
 
   flipped = false;
   flashcard.classList.remove("answer-side");
@@ -207,10 +238,11 @@ function renderCard() {
 
   if (card.mode === "nameToFormula") {
     cardContent.innerHTML = `
-        <h2>${getDisplayName(card)}</h2>
+      ${difficultyHTML}
+      <h2>${getDisplayName(card)}</h2>
     `;
     } else {
-    renderMolecule(card.structure);
+    renderMolecule(card.structure, difficultyHTML);
     }
 }
 
@@ -227,10 +259,15 @@ function flipCard() {
   if (flipped) {
     flashcard.classList.add("answer-side");
 
+    const difficultyHTML = buildDifficultyBadge(card.difficulty);
+
     if (card.mode === "nameToFormula") {
-      renderMolecule(card.structure);
+      renderMolecule(card.structure, difficultyHTML);
     } else {
-      cardContent.innerHTML = buildNameAnswer(card);
+      cardContent.innerHTML = `
+        ${difficultyHTML}
+        ${buildNameAnswer(card)}
+      `;
     }
 
   } else {
@@ -343,7 +380,7 @@ function getApproxCarbonLength(structure) {
   );
 }
 
-function renderMolecule(structure) {
+function renderMolecule(structure, difficultyHTML = "")  {
   const approxLength = getApproxCarbonLength(structure);
 
   const isRingStructure =
@@ -359,10 +396,13 @@ function renderMolecule(structure) {
     approxLength > 6 && !isRingStructure
   );
 
-  cardContent.innerHTML = buildOrganicStructure(structure);
-
+  cardContent.innerHTML = `
+    ${difficultyHTML}
+    ${buildOrganicStructure(structure)}
+  `;
   fitMoleculeToCard(approxLength, isRingStructure);
 }
+
 
 
 function fitMoleculeToCard(approxLength, isRingStructure) {
@@ -385,15 +425,18 @@ function fitMoleculeToCard(approxLength, isRingStructure) {
 function buildBranchContent(branch) {
   if (branch.type === "isopropyl") {
     return `
-      <span class="branch-chain">
-        <span class="branch-atom">CH</span>
-        <span class="branch-horizontal-bond"></span>
-        <span class="branch-atom">CH₃</span>
-        <span class="branch branch-down">
-          <span class="branch-chain">
+      <span class="branch-chain isopropyl">
+        <span class="branch-atom isopropyl-center">
+          CH
+
+          <span class="branch-up-sub">
+            <span class="branch-vertical-bond"></span>
             <span class="branch-atom">CH₃</span>
           </span>
         </span>
+
+        <span class="branch-horizontal-bond"></span>
+        <span class="branch-atom">CH₃</span>
       </span>
     `;
   }
@@ -1046,8 +1089,8 @@ function previousCard() {
 function getBalancedCompounds(compoundList, selectedGroups, count, order) {
   const compoundsByGroup = selectedGroups
     .map((group) => {
-      let groupCompounds = compoundList.filter(
-        (compound) => compound.group === group
+      let groupCompounds = compoundList.filter((compound) =>
+        compoundBelongsToGroup(compound, group)
       );
 
       if (order === "ordered") {
