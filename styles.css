@@ -1489,22 +1489,9 @@ button:hover {
 @media (max-width: 520px) {
   .difficulty-badge {
     left: 24px;
-    top: 95px;
+    top: -60px;
   }
 }
-
-
-
-@media (max-width: 390px) {
-  .molecule-scaler {
-    transform: scale(0.45) !important;
-  }
-}
-
-
-/* =========================
-   RESPONSIVE: MÓVIL
-========================= */
 
 @media (max-width: 520px) {
   .app {
@@ -1574,5 +1561,20 @@ button:hover {
 .answer-space {
   height: 70px;
 }
+
+
+
+@media (max-width: 390px) {
+  .molecule-scaler {
+    transform: scale(0.45) !important;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE: MÓVIL
+========================= */
+
+
 
 
